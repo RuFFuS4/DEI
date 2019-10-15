@@ -32,7 +32,7 @@ namespace ValidarCorreo
             miCnx.Open();
 
             //Hacer la conexion a la bbdd
-            while (miLector.Read()) {
+           while (miLector.Read()) {
                 ComboboxItem item = new ComboboxItem();
                 item.texto = miLector.GetString(1) + " " + miLector.GestString(2);
                 item.value = miLector.GetInt32(0);

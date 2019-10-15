@@ -16,7 +16,7 @@ namespace ValidarCorreo
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Paneles());
+            Application.Run(new ComboPersonalizado());
         }
     }
 }
