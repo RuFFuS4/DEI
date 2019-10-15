@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29403.142
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ValidarCorreo", "ValidarCorreo\ValidarCorreo.csproj", "{AA224857-A5D6-45B5-9C04-A5C48D733AB8}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{AA224857-A5D6-45B5-9C04-A5C48D733AB8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AA224857-A5D6-45B5-9C04-A5C48D733AB8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AA224857-A5D6-45B5-9C04-A5C48D733AB8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AA224857-A5D6-45B5-9C04-A5C48D733AB8}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {BD1FCEEC-426A-47A8-A342-B5F51802CE85}
+	EndGlobalSection
+EndGlobal
