@@ -10,7 +10,7 @@
 
 #pragma warning disable 1591
 
-namespace UsandoDataGridView {
+namespace NotasProyecto {
     
     
     /// <summary>
@@ -20,19 +20,21 @@ namespace UsandoDataGridView {
     [global::System.ComponentModel.DesignerCategoryAttribute("code")]
     [global::System.ComponentModel.ToolboxItem(true)]
     [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedDataSetSchema")]
-    [global::System.Xml.Serialization.XmlRootAttribute("usuarioDataSet")]
+    [global::System.Xml.Serialization.XmlRootAttribute("evaluaDataSet2")]
     [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.DataSet")]
-    public partial class usuarioDataSet : global::System.Data.DataSet {
+    public partial class evaluaDataSet2 : global::System.Data.DataSet {
         
-        private Copia_de_usuarioDataTable tableCopia_de_usuario;
+        private AlumnosDataTable tableAlumnos;
         
-        private usuarioDataTable tableusuario;
+        private NotasDataTable tableNotas;
+        
+        private global::System.Data.DataRelation relationAlumnosNotas;
         
         private global::System.Data.SchemaSerializationMode _schemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        public usuarioDataSet() {
+        public evaluaDataSet2() {
             this.BeginInit();
             this.InitClass();
             global::System.ComponentModel.CollectionChangeEventHandler schemaChangedHandler = new global::System.ComponentModel.CollectionChangeEventHandler(this.SchemaChanged);
@@ -43,7 +45,7 @@ namespace UsandoDataGridView {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        protected usuarioDataSet(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+        protected evaluaDataSet2(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
                 base(info, context, false) {
             if ((this.IsBinarySerialized(info, context) == true)) {
                 this.InitVars(false);
@@ -56,11 +58,11 @@ namespace UsandoDataGridView {
             if ((this.DetermineSchemaSerializationMode(info, context) == global::System.Data.SchemaSerializationMode.IncludeSchema)) {
                 global::System.Data.DataSet ds = new global::System.Data.DataSet();
                 ds.ReadXmlSchema(new global::System.Xml.XmlTextReader(new global::System.IO.StringReader(strSchema)));
-                if ((ds.Tables["Copia de usuario"] != null)) {
-                    base.Tables.Add(new Copia_de_usuarioDataTable(ds.Tables["Copia de usuario"]));
+                if ((ds.Tables["Alumnos"] != null)) {
+                    base.Tables.Add(new AlumnosDataTable(ds.Tables["Alumnos"]));
                 }
-                if ((ds.Tables["usuario"] != null)) {
-                    base.Tables.Add(new usuarioDataTable(ds.Tables["usuario"]));
+                if ((ds.Tables["Notas"] != null)) {
+                    base.Tables.Add(new NotasDataTable(ds.Tables["Notas"]));
                 }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
@@ -84,9 +86,9 @@ namespace UsandoDataGridView {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Browsable(false)]
         [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
-        public Copia_de_usuarioDataTable Copia_de_usuario {
+        public AlumnosDataTable Alumnos {
             get {
-                return this.tableCopia_de_usuario;
+                return this.tableAlumnos;
             }
         }
         
@@ -94,9 +96,9 @@ namespace UsandoDataGridView {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Browsable(false)]
         [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
-        public usuarioDataTable usuario {
+        public NotasDataTable Notas {
             get {
-                return this.tableusuario;
+                return this.tableNotas;
             }
         }
         
@@ -142,7 +144,7 @@ namespace UsandoDataGridView {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         public override global::System.Data.DataSet Clone() {
-            usuarioDataSet cln = ((usuarioDataSet)(base.Clone()));
+            evaluaDataSet2 cln = ((evaluaDataSet2)(base.Clone()));
             cln.InitVars();
             cln.SchemaSerializationMode = this.SchemaSerializationMode;
             return cln;
@@ -167,11 +169,11 @@ namespace UsandoDataGridView {
                 this.Reset();
                 global::System.Data.DataSet ds = new global::System.Data.DataSet();
                 ds.ReadXml(reader);
-                if ((ds.Tables["Copia de usuario"] != null)) {
-                    base.Tables.Add(new Copia_de_usuarioDataTable(ds.Tables["Copia de usuario"]));
+                if ((ds.Tables["Alumnos"] != null)) {
+                    base.Tables.Add(new AlumnosDataTable(ds.Tables["Alumnos"]));
                 }
-                if ((ds.Tables["usuario"] != null)) {
-                    base.Tables.Add(new usuarioDataTable(ds.Tables["usuario"]));
+                if ((ds.Tables["Notas"] != null)) {
+                    base.Tables.Add(new NotasDataTable(ds.Tables["Notas"]));
                 }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
@@ -206,43 +208,48 @@ namespace UsandoDataGridView {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         internal void InitVars(bool initTable) {
-            this.tableCopia_de_usuario = ((Copia_de_usuarioDataTable)(base.Tables["Copia de usuario"]));
+            this.tableAlumnos = ((AlumnosDataTable)(base.Tables["Alumnos"]));
             if ((initTable == true)) {
-                if ((this.tableCopia_de_usuario != null)) {
-                    this.tableCopia_de_usuario.InitVars();
+                if ((this.tableAlumnos != null)) {
+                    this.tableAlumnos.InitVars();
                 }
             }
-            this.tableusuario = ((usuarioDataTable)(base.Tables["usuario"]));
+            this.tableNotas = ((NotasDataTable)(base.Tables["Notas"]));
             if ((initTable == true)) {
-                if ((this.tableusuario != null)) {
-                    this.tableusuario.InitVars();
+                if ((this.tableNotas != null)) {
+                    this.tableNotas.InitVars();
                 }
             }
+            this.relationAlumnosNotas = this.Relations["AlumnosNotas"];
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         private void InitClass() {
-            this.DataSetName = "usuarioDataSet";
+            this.DataSetName = "evaluaDataSet2";
             this.Prefix = "";
-            this.Namespace = "http://tempuri.org/usuarioDataSet.xsd";
+            this.Namespace = "http://tempuri.org/evaluaDataSet2.xsd";
             this.EnforceConstraints = true;
             this.SchemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
-            this.tableCopia_de_usuario = new Copia_de_usuarioDataTable();
-            base.Tables.Add(this.tableCopia_de_usuario);
-            this.tableusuario = new usuarioDataTable();
-            base.Tables.Add(this.tableusuario);
+            this.tableAlumnos = new AlumnosDataTable();
+            base.Tables.Add(this.tableAlumnos);
+            this.tableNotas = new NotasDataTable();
+            base.Tables.Add(this.tableNotas);
+            this.relationAlumnosNotas = new global::System.Data.DataRelation("AlumnosNotas", new global::System.Data.DataColumn[] {
+                        this.tableAlumnos.nifColumn}, new global::System.Data.DataColumn[] {
+                        this.tableNotas.nifAlumnoColumn}, false);
+            this.Relations.Add(this.relationAlumnosNotas);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        private bool ShouldSerializeCopia_de_usuario() {
+        private bool ShouldSerializeAlumnos() {
             return false;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        private bool ShouldSerializeusuario() {
+        private bool ShouldSerializeNotas() {
             return false;
         }
         
@@ -257,7 +264,7 @@ namespace UsandoDataGridView {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedDataSetSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
-            usuarioDataSet ds = new usuarioDataSet();
+            evaluaDataSet2 ds = new evaluaDataSet2();
             global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
             global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
             global::System.Xml.Schema.XmlSchemaAny any = new global::System.Xml.Schema.XmlSchemaAny();
@@ -302,28 +309,26 @@ namespace UsandoDataGridView {
         }
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        public delegate void Copia_de_usuarioRowChangeEventHandler(object sender, Copia_de_usuarioRowChangeEvent e);
+        public delegate void AlumnosRowChangeEventHandler(object sender, AlumnosRowChangeEvent e);
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        public delegate void usuarioRowChangeEventHandler(object sender, usuarioRowChangeEvent e);
+        public delegate void NotasRowChangeEventHandler(object sender, NotasRowChangeEvent e);
         
         /// <summary>
         ///Represents the strongly named DataTable class.
         ///</summary>
         [global::System.Serializable()]
         [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
-        public partial class Copia_de_usuarioDataTable : global::System.Data.TypedTableBase<Copia_de_usuarioRow> {
+        public partial class AlumnosDataTable : global::System.Data.TypedTableBase<AlumnosRow> {
             
-            private global::System.Data.DataColumn columnId;
+            private global::System.Data.DataColumn columnnif;
             
             private global::System.Data.DataColumn columnnombre;
             
-            private global::System.Data.DataColumn columnclave;
-            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public Copia_de_usuarioDataTable() {
-                this.TableName = "Copia de usuario";
+            public AlumnosDataTable() {
+                this.TableName = "Alumnos";
                 this.BeginInit();
                 this.InitClass();
                 this.EndInit();
@@ -331,7 +336,7 @@ namespace UsandoDataGridView {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            internal Copia_de_usuarioDataTable(global::System.Data.DataTable table) {
+            internal AlumnosDataTable(global::System.Data.DataTable table) {
                 this.TableName = table.TableName;
                 if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
                     this.CaseSensitive = table.CaseSensitive;
@@ -348,16 +353,16 @@ namespace UsandoDataGridView {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            protected Copia_de_usuarioDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+            protected AlumnosDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
                     base(info, context) {
                 this.InitVars();
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public global::System.Data.DataColumn IdColumn {
+            public global::System.Data.DataColumn nifColumn {
                 get {
-                    return this.columnId;
+                    return this.columnnif;
                 }
             }
             
@@ -371,14 +376,6 @@ namespace UsandoDataGridView {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public global::System.Data.DataColumn claveColumn {
-                get {
-                    return this.columnclave;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -388,54 +385,53 @@ namespace UsandoDataGridView {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public Copia_de_usuarioRow this[int index] {
+            public AlumnosRow this[int index] {
                 get {
-                    return ((Copia_de_usuarioRow)(this.Rows[index]));
+                    return ((AlumnosRow)(this.Rows[index]));
                 }
             }
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public event Copia_de_usuarioRowChangeEventHandler Copia_de_usuarioRowChanging;
+            public event AlumnosRowChangeEventHandler AlumnosRowChanging;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public event Copia_de_usuarioRowChangeEventHandler Copia_de_usuarioRowChanged;
+            public event AlumnosRowChangeEventHandler AlumnosRowChanged;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public event Copia_de_usuarioRowChangeEventHandler Copia_de_usuarioRowDeleting;
+            public event AlumnosRowChangeEventHandler AlumnosRowDeleting;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public event Copia_de_usuarioRowChangeEventHandler Copia_de_usuarioRowDeleted;
+            public event AlumnosRowChangeEventHandler AlumnosRowDeleted;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public void AddCopia_de_usuarioRow(Copia_de_usuarioRow row) {
+            public void AddAlumnosRow(AlumnosRow row) {
                 this.Rows.Add(row);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public Copia_de_usuarioRow AddCopia_de_usuarioRow(string nombre, string clave) {
-                Copia_de_usuarioRow rowCopia_de_usuarioRow = ((Copia_de_usuarioRow)(this.NewRow()));
+            public AlumnosRow AddAlumnosRow(string nif, string nombre) {
+                AlumnosRow rowAlumnosRow = ((AlumnosRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
-                        null,
-                        nombre,
-                        clave};
-                rowCopia_de_usuarioRow.ItemArray = columnValuesArray;
-                this.Rows.Add(rowCopia_de_usuarioRow);
-                return rowCopia_de_usuarioRow;
+                        nif,
+                        nombre};
+                rowAlumnosRow.ItemArray = columnValuesArray;
+                this.Rows.Add(rowAlumnosRow);
+                return rowAlumnosRow;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public Copia_de_usuarioRow FindById(int Id) {
-                return ((Copia_de_usuarioRow)(this.Rows.Find(new object[] {
-                            Id})));
+            public AlumnosRow FindBynif(string nif) {
+                return ((AlumnosRow)(this.Rows.Find(new object[] {
+                            nif})));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public override global::System.Data.DataTable Clone() {
-                Copia_de_usuarioDataTable cln = ((Copia_de_usuarioDataTable)(base.Clone()));
+                AlumnosDataTable cln = ((AlumnosDataTable)(base.Clone()));
                 cln.InitVars();
                 return cln;
             }
@@ -443,61 +439,55 @@ namespace UsandoDataGridView {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             protected override global::System.Data.DataTable CreateInstance() {
-                return new Copia_de_usuarioDataTable();
+                return new AlumnosDataTable();
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             internal void InitVars() {
-                this.columnId = base.Columns["Id"];
+                this.columnnif = base.Columns["nif"];
                 this.columnnombre = base.Columns["nombre"];
-                this.columnclave = base.Columns["clave"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             private void InitClass() {
-                this.columnId = new global::System.Data.DataColumn("Id", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnId);
+                this.columnnif = new global::System.Data.DataColumn("nif", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnnif);
                 this.columnnombre = new global::System.Data.DataColumn("nombre", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnnombre);
-                this.columnclave = new global::System.Data.DataColumn("clave", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnclave);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
-                                this.columnId}, true));
-                this.columnId.AutoIncrement = true;
-                this.columnId.AutoIncrementSeed = -1;
-                this.columnId.AutoIncrementStep = -1;
-                this.columnId.AllowDBNull = false;
-                this.columnId.Unique = true;
-                this.columnnombre.MaxLength = 255;
-                this.columnclave.MaxLength = 255;
+                                this.columnnif}, true));
+                this.columnnif.AllowDBNull = false;
+                this.columnnif.Unique = true;
+                this.columnnif.MaxLength = 9;
+                this.columnnombre.MaxLength = 50;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public Copia_de_usuarioRow NewCopia_de_usuarioRow() {
-                return ((Copia_de_usuarioRow)(this.NewRow()));
+            public AlumnosRow NewAlumnosRow() {
+                return ((AlumnosRow)(this.NewRow()));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
-                return new Copia_de_usuarioRow(builder);
+                return new AlumnosRow(builder);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             protected override global::System.Type GetRowType() {
-                return typeof(Copia_de_usuarioRow);
+                return typeof(AlumnosRow);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowChanged(e);
-                if ((this.Copia_de_usuarioRowChanged != null)) {
-                    this.Copia_de_usuarioRowChanged(this, new Copia_de_usuarioRowChangeEvent(((Copia_de_usuarioRow)(e.Row)), e.Action));
+                if ((this.AlumnosRowChanged != null)) {
+                    this.AlumnosRowChanged(this, new AlumnosRowChangeEvent(((AlumnosRow)(e.Row)), e.Action));
                 }
             }
             
@@ -505,8 +495,8 @@ namespace UsandoDataGridView {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowChanging(e);
-                if ((this.Copia_de_usuarioRowChanging != null)) {
-                    this.Copia_de_usuarioRowChanging(this, new Copia_de_usuarioRowChangeEvent(((Copia_de_usuarioRow)(e.Row)), e.Action));
+                if ((this.AlumnosRowChanging != null)) {
+                    this.AlumnosRowChanging(this, new AlumnosRowChangeEvent(((AlumnosRow)(e.Row)), e.Action));
                 }
             }
             
@@ -514,8 +504,8 @@ namespace UsandoDataGridView {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowDeleted(e);
-                if ((this.Copia_de_usuarioRowDeleted != null)) {
-                    this.Copia_de_usuarioRowDeleted(this, new Copia_de_usuarioRowChangeEvent(((Copia_de_usuarioRow)(e.Row)), e.Action));
+                if ((this.AlumnosRowDeleted != null)) {
+                    this.AlumnosRowDeleted(this, new AlumnosRowChangeEvent(((AlumnosRow)(e.Row)), e.Action));
                 }
             }
             
@@ -523,14 +513,14 @@ namespace UsandoDataGridView {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowDeleting(e);
-                if ((this.Copia_de_usuarioRowDeleting != null)) {
-                    this.Copia_de_usuarioRowDeleting(this, new Copia_de_usuarioRowChangeEvent(((Copia_de_usuarioRow)(e.Row)), e.Action));
+                if ((this.AlumnosRowDeleting != null)) {
+                    this.AlumnosRowDeleting(this, new AlumnosRowChangeEvent(((AlumnosRow)(e.Row)), e.Action));
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public void RemoveCopia_de_usuarioRow(Copia_de_usuarioRow row) {
+            public void RemoveAlumnosRow(AlumnosRow row) {
                 this.Rows.Remove(row);
             }
             
@@ -539,7 +529,7 @@ namespace UsandoDataGridView {
             public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
                 global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
                 global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
-                usuarioDataSet ds = new usuarioDataSet();
+                evaluaDataSet2 ds = new evaluaDataSet2();
                 global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
                 any1.Namespace = "http://www.w3.org/2001/XMLSchema";
                 any1.MinOccurs = new decimal(0);
@@ -557,7 +547,7 @@ namespace UsandoDataGridView {
                 type.Attributes.Add(attribute1);
                 global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
                 attribute2.Name = "tableTypeName";
-                attribute2.FixedValue = "Copia_de_usuarioDataTable";
+                attribute2.FixedValue = "AlumnosDataTable";
                 type.Attributes.Add(attribute2);
                 type.Particle = sequence;
                 global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
@@ -603,18 +593,28 @@ namespace UsandoDataGridView {
         ///</summary>
         [global::System.Serializable()]
         [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
-        public partial class usuarioDataTable : global::System.Data.TypedTableBase<usuarioRow> {
+        public partial class NotasDataTable : global::System.Data.TypedTableBase<NotasRow> {
             
-            private global::System.Data.DataColumn columnId;
+            private global::System.Data.DataColumn columnnifAlumno;
             
-            private global::System.Data.DataColumn columnusuario;
+            private global::System.Data.DataColumn columnperiodo;
             
-            private global::System.Data.DataColumn columnclave;
+            private global::System.Data.DataColumn columnfol;
+            
+            private global::System.Data.DataColumn columnret;
+            
+            private global::System.Data.DataColumn columnina;
+            
+            private global::System.Data.DataColumn columnfpr;
+            
+            private global::System.Data.DataColumn columnral;
+            
+            private global::System.Data.DataColumn columnsim;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public usuarioDataTable() {
-                this.TableName = "usuario";
+            public NotasDataTable() {
+                this.TableName = "Notas";
                 this.BeginInit();
                 this.InitClass();
                 this.EndInit();
@@ -622,7 +622,7 @@ namespace UsandoDataGridView {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            internal usuarioDataTable(global::System.Data.DataTable table) {
+            internal NotasDataTable(global::System.Data.DataTable table) {
                 this.TableName = table.TableName;
                 if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
                     this.CaseSensitive = table.CaseSensitive;
@@ -639,32 +639,72 @@ namespace UsandoDataGridView {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            protected usuarioDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+            protected NotasDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
                     base(info, context) {
                 this.InitVars();
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public global::System.Data.DataColumn IdColumn {
+            public global::System.Data.DataColumn nifAlumnoColumn {
                 get {
-                    return this.columnId;
+                    return this.columnnifAlumno;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public global::System.Data.DataColumn usuarioColumn {
+            public global::System.Data.DataColumn periodoColumn {
                 get {
-                    return this.columnusuario;
+                    return this.columnperiodo;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public global::System.Data.DataColumn claveColumn {
+            public global::System.Data.DataColumn folColumn {
                 get {
-                    return this.columnclave;
+                    return this.columnfol;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn retColumn {
+                get {
+                    return this.columnret;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn inaColumn {
+                get {
+                    return this.columnina;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn fprColumn {
+                get {
+                    return this.columnfpr;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn ralColumn {
+                get {
+                    return this.columnral;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn simColumn {
+                get {
+                    return this.columnsim;
                 }
             }
             
@@ -679,54 +719,63 @@ namespace UsandoDataGridView {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public usuarioRow this[int index] {
+            public NotasRow this[int index] {
                 get {
-                    return ((usuarioRow)(this.Rows[index]));
+                    return ((NotasRow)(this.Rows[index]));
                 }
             }
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public event usuarioRowChangeEventHandler usuarioRowChanging;
+            public event NotasRowChangeEventHandler NotasRowChanging;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public event usuarioRowChangeEventHandler usuarioRowChanged;
+            public event NotasRowChangeEventHandler NotasRowChanged;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public event usuarioRowChangeEventHandler usuarioRowDeleting;
+            public event NotasRowChangeEventHandler NotasRowDeleting;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public event usuarioRowChangeEventHandler usuarioRowDeleted;
+            public event NotasRowChangeEventHandler NotasRowDeleted;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public void AddusuarioRow(usuarioRow row) {
+            public void AddNotasRow(NotasRow row) {
                 this.Rows.Add(row);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public usuarioRow AddusuarioRow(string usuario, string clave) {
-                usuarioRow rowusuarioRow = ((usuarioRow)(this.NewRow()));
+            public NotasRow AddNotasRow(AlumnosRow parentAlumnosRowByAlumnosNotas, string periodo, byte fol, byte ret, byte ina, byte fpr, byte ral, byte sim) {
+                NotasRow rowNotasRow = ((NotasRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
-                        usuario,
-                        clave};
-                rowusuarioRow.ItemArray = columnValuesArray;
-                this.Rows.Add(rowusuarioRow);
-                return rowusuarioRow;
+                        periodo,
+                        fol,
+                        ret,
+                        ina,
+                        fpr,
+                        ral,
+                        sim};
+                if ((parentAlumnosRowByAlumnosNotas != null)) {
+                    columnValuesArray[0] = parentAlumnosRowByAlumnosNotas[0];
+                }
+                rowNotasRow.ItemArray = columnValuesArray;
+                this.Rows.Add(rowNotasRow);
+                return rowNotasRow;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public usuarioRow FindById(int Id) {
-                return ((usuarioRow)(this.Rows.Find(new object[] {
-                            Id})));
+            public NotasRow FindBynifAlumnoperiodo(string nifAlumno, string periodo) {
+                return ((NotasRow)(this.Rows.Find(new object[] {
+                            nifAlumno,
+                            periodo})));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public override global::System.Data.DataTable Clone() {
-                usuarioDataTable cln = ((usuarioDataTable)(base.Clone()));
+                NotasDataTable cln = ((NotasDataTable)(base.Clone()));
                 cln.InitVars();
                 return cln;
             }
@@ -734,61 +783,74 @@ namespace UsandoDataGridView {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             protected override global::System.Data.DataTable CreateInstance() {
-                return new usuarioDataTable();
+                return new NotasDataTable();
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             internal void InitVars() {
-                this.columnId = base.Columns["Id"];
-                this.columnusuario = base.Columns["usuario"];
-                this.columnclave = base.Columns["clave"];
+                this.columnnifAlumno = base.Columns["nifAlumno"];
+                this.columnperiodo = base.Columns["periodo"];
+                this.columnfol = base.Columns["fol"];
+                this.columnret = base.Columns["ret"];
+                this.columnina = base.Columns["ina"];
+                this.columnfpr = base.Columns["fpr"];
+                this.columnral = base.Columns["ral"];
+                this.columnsim = base.Columns["sim"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             private void InitClass() {
-                this.columnId = new global::System.Data.DataColumn("Id", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnId);
-                this.columnusuario = new global::System.Data.DataColumn("usuario", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnusuario);
-                this.columnclave = new global::System.Data.DataColumn("clave", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnclave);
+                this.columnnifAlumno = new global::System.Data.DataColumn("nifAlumno", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnnifAlumno);
+                this.columnperiodo = new global::System.Data.DataColumn("periodo", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnperiodo);
+                this.columnfol = new global::System.Data.DataColumn("fol", typeof(byte), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnfol);
+                this.columnret = new global::System.Data.DataColumn("ret", typeof(byte), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnret);
+                this.columnina = new global::System.Data.DataColumn("ina", typeof(byte), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnina);
+                this.columnfpr = new global::System.Data.DataColumn("fpr", typeof(byte), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnfpr);
+                this.columnral = new global::System.Data.DataColumn("ral", typeof(byte), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnral);
+                this.columnsim = new global::System.Data.DataColumn("sim", typeof(byte), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnsim);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
-                                this.columnId}, true));
-                this.columnId.AutoIncrement = true;
-                this.columnId.AutoIncrementSeed = -1;
-                this.columnId.AutoIncrementStep = -1;
-                this.columnId.AllowDBNull = false;
-                this.columnId.Unique = true;
-                this.columnusuario.MaxLength = 255;
-                this.columnclave.MaxLength = 255;
+                                this.columnnifAlumno,
+                                this.columnperiodo}, true));
+                this.columnnifAlumno.AllowDBNull = false;
+                this.columnnifAlumno.MaxLength = 50;
+                this.columnperiodo.AllowDBNull = false;
+                this.columnperiodo.MaxLength = 1;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public usuarioRow NewusuarioRow() {
-                return ((usuarioRow)(this.NewRow()));
+            public NotasRow NewNotasRow() {
+                return ((NotasRow)(this.NewRow()));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
-                return new usuarioRow(builder);
+                return new NotasRow(builder);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             protected override global::System.Type GetRowType() {
-                return typeof(usuarioRow);
+                return typeof(NotasRow);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowChanged(e);
-                if ((this.usuarioRowChanged != null)) {
-                    this.usuarioRowChanged(this, new usuarioRowChangeEvent(((usuarioRow)(e.Row)), e.Action));
+                if ((this.NotasRowChanged != null)) {
+                    this.NotasRowChanged(this, new NotasRowChangeEvent(((NotasRow)(e.Row)), e.Action));
                 }
             }
             
@@ -796,8 +858,8 @@ namespace UsandoDataGridView {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowChanging(e);
-                if ((this.usuarioRowChanging != null)) {
-                    this.usuarioRowChanging(this, new usuarioRowChangeEvent(((usuarioRow)(e.Row)), e.Action));
+                if ((this.NotasRowChanging != null)) {
+                    this.NotasRowChanging(this, new NotasRowChangeEvent(((NotasRow)(e.Row)), e.Action));
                 }
             }
             
@@ -805,8 +867,8 @@ namespace UsandoDataGridView {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowDeleted(e);
-                if ((this.usuarioRowDeleted != null)) {
-                    this.usuarioRowDeleted(this, new usuarioRowChangeEvent(((usuarioRow)(e.Row)), e.Action));
+                if ((this.NotasRowDeleted != null)) {
+                    this.NotasRowDeleted(this, new NotasRowChangeEvent(((NotasRow)(e.Row)), e.Action));
                 }
             }
             
@@ -814,14 +876,14 @@ namespace UsandoDataGridView {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowDeleting(e);
-                if ((this.usuarioRowDeleting != null)) {
-                    this.usuarioRowDeleting(this, new usuarioRowChangeEvent(((usuarioRow)(e.Row)), e.Action));
+                if ((this.NotasRowDeleting != null)) {
+                    this.NotasRowDeleting(this, new NotasRowChangeEvent(((NotasRow)(e.Row)), e.Action));
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public void RemoveusuarioRow(usuarioRow row) {
+            public void RemoveNotasRow(NotasRow row) {
                 this.Rows.Remove(row);
             }
             
@@ -830,7 +892,7 @@ namespace UsandoDataGridView {
             public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
                 global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
                 global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
-                usuarioDataSet ds = new usuarioDataSet();
+                evaluaDataSet2 ds = new evaluaDataSet2();
                 global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
                 any1.Namespace = "http://www.w3.org/2001/XMLSchema";
                 any1.MinOccurs = new decimal(0);
@@ -848,7 +910,7 @@ namespace UsandoDataGridView {
                 type.Attributes.Add(attribute1);
                 global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
                 attribute2.Name = "tableTypeName";
-                attribute2.FixedValue = "usuarioDataTable";
+                attribute2.FixedValue = "NotasDataTable";
                 type.Attributes.Add(attribute2);
                 type.Particle = sequence;
                 global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
@@ -892,25 +954,25 @@ namespace UsandoDataGridView {
         /// <summary>
         ///Represents strongly named DataRow class.
         ///</summary>
-        public partial class Copia_de_usuarioRow : global::System.Data.DataRow {
+        public partial class AlumnosRow : global::System.Data.DataRow {
             
-            private Copia_de_usuarioDataTable tableCopia_de_usuario;
+            private AlumnosDataTable tableAlumnos;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            internal Copia_de_usuarioRow(global::System.Data.DataRowBuilder rb) : 
+            internal AlumnosRow(global::System.Data.DataRowBuilder rb) : 
                     base(rb) {
-                this.tableCopia_de_usuario = ((Copia_de_usuarioDataTable)(this.Table));
+                this.tableAlumnos = ((AlumnosDataTable)(this.Table));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public int Id {
+            public string nif {
                 get {
-                    return ((int)(this[this.tableCopia_de_usuario.IdColumn]));
+                    return ((string)(this[this.tableAlumnos.nifColumn]));
                 }
                 set {
-                    this[this.tableCopia_de_usuario.IdColumn] = value;
+                    this[this.tableAlumnos.nifColumn] = value;
                 }
             }
             
@@ -919,137 +981,254 @@ namespace UsandoDataGridView {
             public string nombre {
                 get {
                     try {
-                        return ((string)(this[this.tableCopia_de_usuario.nombreColumn]));
+                        return ((string)(this[this.tableAlumnos.nombreColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'nombre\' de la tabla \'Copia de usuario\' es DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'nombre\' de la tabla \'Alumnos\' es DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableCopia_de_usuario.nombreColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public string clave {
-                get {
-                    try {
-                        return ((string)(this[this.tableCopia_de_usuario.claveColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'clave\' de la tabla \'Copia de usuario\' es DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableCopia_de_usuario.claveColumn] = value;
+                    this[this.tableAlumnos.nombreColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public bool IsnombreNull() {
-                return this.IsNull(this.tableCopia_de_usuario.nombreColumn);
+                return this.IsNull(this.tableAlumnos.nombreColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public void SetnombreNull() {
-                this[this.tableCopia_de_usuario.nombreColumn] = global::System.Convert.DBNull;
+                this[this.tableAlumnos.nombreColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public bool IsclaveNull() {
-                return this.IsNull(this.tableCopia_de_usuario.claveColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public void SetclaveNull() {
-                this[this.tableCopia_de_usuario.claveColumn] = global::System.Convert.DBNull;
+            public NotasRow[] GetNotasRows() {
+                if ((this.Table.ChildRelations["AlumnosNotas"] == null)) {
+                    return new NotasRow[0];
+                }
+                else {
+                    return ((NotasRow[])(base.GetChildRows(this.Table.ChildRelations["AlumnosNotas"])));
+                }
             }
         }
         
         /// <summary>
         ///Represents strongly named DataRow class.
         ///</summary>
-        public partial class usuarioRow : global::System.Data.DataRow {
+        public partial class NotasRow : global::System.Data.DataRow {
             
-            private usuarioDataTable tableusuario;
+            private NotasDataTable tableNotas;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            internal usuarioRow(global::System.Data.DataRowBuilder rb) : 
+            internal NotasRow(global::System.Data.DataRowBuilder rb) : 
                     base(rb) {
-                this.tableusuario = ((usuarioDataTable)(this.Table));
+                this.tableNotas = ((NotasDataTable)(this.Table));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public int Id {
+            public string nifAlumno {
                 get {
-                    return ((int)(this[this.tableusuario.IdColumn]));
+                    return ((string)(this[this.tableNotas.nifAlumnoColumn]));
                 }
                 set {
-                    this[this.tableusuario.IdColumn] = value;
+                    this[this.tableNotas.nifAlumnoColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public string usuario {
+            public string periodo {
                 get {
-                    try {
-                        return ((string)(this[this.tableusuario.usuarioColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'usuario\' de la tabla \'usuario\' es DBNull.", e);
-                    }
+                    return ((string)(this[this.tableNotas.periodoColumn]));
                 }
                 set {
-                    this[this.tableusuario.usuarioColumn] = value;
+                    this[this.tableNotas.periodoColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public string clave {
+            public byte fol {
                 get {
                     try {
-                        return ((string)(this[this.tableusuario.claveColumn]));
+                        return ((byte)(this[this.tableNotas.folColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'clave\' de la tabla \'usuario\' es DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'fol\' de la tabla \'Notas\' es DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableusuario.claveColumn] = value;
+                    this[this.tableNotas.folColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public bool IsusuarioNull() {
-                return this.IsNull(this.tableusuario.usuarioColumn);
+            public byte ret {
+                get {
+                    try {
+                        return ((byte)(this[this.tableNotas.retColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'ret\' de la tabla \'Notas\' es DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableNotas.retColumn] = value;
+                }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public void SetusuarioNull() {
-                this[this.tableusuario.usuarioColumn] = global::System.Convert.DBNull;
+            public byte ina {
+                get {
+                    try {
+                        return ((byte)(this[this.tableNotas.inaColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'ina\' de la tabla \'Notas\' es DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableNotas.inaColumn] = value;
+                }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public bool IsclaveNull() {
-                return this.IsNull(this.tableusuario.claveColumn);
+            public byte fpr {
+                get {
+                    try {
+                        return ((byte)(this[this.tableNotas.fprColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'fpr\' de la tabla \'Notas\' es DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableNotas.fprColumn] = value;
+                }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public void SetclaveNull() {
-                this[this.tableusuario.claveColumn] = global::System.Convert.DBNull;
+            public byte ral {
+                get {
+                    try {
+                        return ((byte)(this[this.tableNotas.ralColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'ral\' de la tabla \'Notas\' es DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableNotas.ralColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public byte sim {
+                get {
+                    try {
+                        return ((byte)(this[this.tableNotas.simColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'sim\' de la tabla \'Notas\' es DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableNotas.simColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public AlumnosRow AlumnosRow {
+                get {
+                    return ((AlumnosRow)(this.GetParentRow(this.Table.ParentRelations["AlumnosNotas"])));
+                }
+                set {
+                    this.SetParentRow(value, this.Table.ParentRelations["AlumnosNotas"]);
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsfolNull() {
+                return this.IsNull(this.tableNotas.folColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetfolNull() {
+                this[this.tableNotas.folColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsretNull() {
+                return this.IsNull(this.tableNotas.retColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetretNull() {
+                this[this.tableNotas.retColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsinaNull() {
+                return this.IsNull(this.tableNotas.inaColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetinaNull() {
+                this[this.tableNotas.inaColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsfprNull() {
+                return this.IsNull(this.tableNotas.fprColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetfprNull() {
+                this[this.tableNotas.fprColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsralNull() {
+                return this.IsNull(this.tableNotas.ralColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetralNull() {
+                this[this.tableNotas.ralColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IssimNull() {
+                return this.IsNull(this.tableNotas.simColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetsimNull() {
+                this[this.tableNotas.simColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -1057,22 +1236,22 @@ namespace UsandoDataGridView {
         ///Row event argument class
         ///</summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        public class Copia_de_usuarioRowChangeEvent : global::System.EventArgs {
+        public class AlumnosRowChangeEvent : global::System.EventArgs {
             
-            private Copia_de_usuarioRow eventRow;
+            private AlumnosRow eventRow;
             
             private global::System.Data.DataRowAction eventAction;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public Copia_de_usuarioRowChangeEvent(Copia_de_usuarioRow row, global::System.Data.DataRowAction action) {
+            public AlumnosRowChangeEvent(AlumnosRow row, global::System.Data.DataRowAction action) {
                 this.eventRow = row;
                 this.eventAction = action;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public Copia_de_usuarioRow Row {
+            public AlumnosRow Row {
                 get {
                     return this.eventRow;
                 }
@@ -1091,22 +1270,22 @@ namespace UsandoDataGridView {
         ///Row event argument class
         ///</summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        public class usuarioRowChangeEvent : global::System.EventArgs {
+        public class NotasRowChangeEvent : global::System.EventArgs {
             
-            private usuarioRow eventRow;
+            private NotasRow eventRow;
             
             private global::System.Data.DataRowAction eventAction;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public usuarioRowChangeEvent(usuarioRow row, global::System.Data.DataRowAction action) {
+            public NotasRowChangeEvent(NotasRow row, global::System.Data.DataRowAction action) {
                 this.eventRow = row;
                 this.eventAction = action;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public usuarioRow Row {
+            public NotasRow Row {
                 get {
                     return this.eventRow;
                 }
@@ -1122,7 +1301,7 @@ namespace UsandoDataGridView {
         }
     }
 }
-namespace UsandoDataGridView.usuarioDataSetTableAdapters {
+namespace NotasProyecto.evaluaDataSet2TableAdapters {
     
     
     /// <summary>
@@ -1134,7 +1313,7 @@ namespace UsandoDataGridView.usuarioDataSetTableAdapters {
     [global::System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner" +
         ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
     [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-    public partial class Copia_de_usuarioTableAdapter : global::System.ComponentModel.Component {
+    public partial class AlumnosTableAdapter : global::System.ComponentModel.Component {
         
         private global::System.Data.OleDb.OleDbDataAdapter _adapter;
         
@@ -1148,7 +1327,7 @@ namespace UsandoDataGridView.usuarioDataSetTableAdapters {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        public Copia_de_usuarioTableAdapter() {
+        public AlumnosTableAdapter() {
             this.ClearBeforeFill = true;
         }
         
@@ -1245,47 +1424,35 @@ namespace UsandoDataGridView.usuarioDataSetTableAdapters {
             this._adapter = new global::System.Data.OleDb.OleDbDataAdapter();
             global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
             tableMapping.SourceTable = "Table";
-            tableMapping.DataSetTable = "Copia de usuario";
-            tableMapping.ColumnMappings.Add("Id", "Id");
+            tableMapping.DataSetTable = "Alumnos";
+            tableMapping.ColumnMappings.Add("nif", "nif");
             tableMapping.ColumnMappings.Add("nombre", "nombre");
-            tableMapping.ColumnMappings.Add("clave", "clave");
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::System.Data.OleDb.OleDbCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
-            this._adapter.DeleteCommand.CommandText = "DELETE FROM `Copia de usuario` WHERE ((`Id` = ?) AND ((? = 1 AND `nombre` IS NULL" +
-                ") OR (`nombre` = ?)) AND ((? = 1 AND `clave` IS NULL) OR (`clave` = ?)))";
+            this._adapter.DeleteCommand.CommandText = "DELETE FROM `Alumnos` WHERE ((`nif` = ?) AND ((? = 1 AND `nombre` IS NULL) OR (`n" +
+                "ombre` = ?)))";
             this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_Id", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Id", global::System.Data.DataRowVersion.Original, false, null));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_nif", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "nif", global::System.Data.DataRowVersion.Original, false, null));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_nombre", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "nombre", global::System.Data.DataRowVersion.Original, true, null));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_nombre", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "nombre", global::System.Data.DataRowVersion.Original, false, null));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_clave", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "clave", global::System.Data.DataRowVersion.Original, true, null));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_clave", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "clave", global::System.Data.DataRowVersion.Original, false, null));
-            this._adapter.InsertCommand = new global::System.Data.OleDb.OleDbCommand();
-            this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = "INSERT INTO `Copia de usuario` (`nombre`, `clave`) VALUES (?, ?)";
-            this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("nombre", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "nombre", global::System.Data.DataRowVersion.Current, false, null));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("clave", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "clave", global::System.Data.DataRowVersion.Current, false, null));
             this._adapter.UpdateCommand = new global::System.Data.OleDb.OleDbCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = "UPDATE `Copia de usuario` SET `nombre` = ?, `clave` = ? WHERE ((`Id` = ?) AND ((?" +
-                " = 1 AND `nombre` IS NULL) OR (`nombre` = ?)) AND ((? = 1 AND `clave` IS NULL) O" +
-                "R (`clave` = ?)))";
+            this._adapter.UpdateCommand.CommandText = "UPDATE `Alumnos` SET `nif` = ?, `nombre` = ? WHERE ((`nif` = ?) AND ((? = 1 AND `" +
+                "nombre` IS NULL) OR (`nombre` = ?)))";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("nif", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "nif", global::System.Data.DataRowVersion.Current, false, null));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("nombre", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "nombre", global::System.Data.DataRowVersion.Current, false, null));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("clave", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "clave", global::System.Data.DataRowVersion.Current, false, null));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_Id", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Id", global::System.Data.DataRowVersion.Original, false, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_nif", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "nif", global::System.Data.DataRowVersion.Original, false, null));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_nombre", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "nombre", global::System.Data.DataRowVersion.Original, true, null));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_nombre", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "nombre", global::System.Data.DataRowVersion.Original, false, null));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_clave", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "clave", global::System.Data.DataRowVersion.Original, true, null));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_clave", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "clave", global::System.Data.DataRowVersion.Original, false, null));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.OleDb.OleDbConnection();
-            this._connection.ConnectionString = global::UsandoDataGridView.Properties.Settings.Default.usuarioConnectionString;
+            this._connection.ConnectionString = global::NotasProyecto.Properties.Settings.Default.evaluaConnectionString;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1294,7 +1461,7 @@ namespace UsandoDataGridView.usuarioDataSetTableAdapters {
             this._commandCollection = new global::System.Data.OleDb.OleDbCommand[1];
             this._commandCollection[0] = new global::System.Data.OleDb.OleDbCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT Id, nombre, clave FROM [Copia de usuario]";
+            this._commandCollection[0].CommandText = "SELECT nif, nombre FROM Alumnos";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
@@ -1302,7 +1469,7 @@ namespace UsandoDataGridView.usuarioDataSetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(usuarioDataSet.Copia_de_usuarioDataTable dataTable) {
+        public virtual int Fill(evaluaDataSet2.AlumnosDataTable dataTable) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
@@ -1315,9 +1482,9 @@ namespace UsandoDataGridView.usuarioDataSetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual usuarioDataSet.Copia_de_usuarioDataTable GetData() {
+        public virtual evaluaDataSet2.AlumnosDataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            usuarioDataSet.Copia_de_usuarioDataTable dataTable = new usuarioDataSet.Copia_de_usuarioDataTable();
+            evaluaDataSet2.AlumnosDataTable dataTable = new evaluaDataSet2.AlumnosDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
         }
@@ -1325,15 +1492,15 @@ namespace UsandoDataGridView.usuarioDataSetTableAdapters {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(usuarioDataSet.Copia_de_usuarioDataTable dataTable) {
+        public virtual int Update(evaluaDataSet2.AlumnosDataTable dataTable) {
             return this.Adapter.Update(dataTable);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(usuarioDataSet dataSet) {
-            return this.Adapter.Update(dataSet, "Copia de usuario");
+        public virtual int Update(evaluaDataSet2 dataSet) {
+            return this.Adapter.Update(dataSet, "Alumnos");
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1355,8 +1522,13 @@ namespace UsandoDataGridView.usuarioDataSetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
-        public virtual int Delete(int Original_Id, string Original_nombre, string Original_clave) {
-            this.Adapter.DeleteCommand.Parameters[0].Value = ((int)(Original_Id));
+        public virtual int Delete(string Original_nif, string Original_nombre) {
+            if ((Original_nif == null)) {
+                this.Adapter.DeleteCommand.Parameters[0].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[0].Value = ((string)(Original_nif));
+            }
             if ((Original_nombre == null)) {
                 this.Adapter.DeleteCommand.Parameters[1].Value = ((object)(1));
                 this.Adapter.DeleteCommand.Parameters[2].Value = global::System.DBNull.Value;
@@ -1364,14 +1536,6 @@ namespace UsandoDataGridView.usuarioDataSetTableAdapters {
             else {
                 this.Adapter.DeleteCommand.Parameters[1].Value = ((object)(0));
                 this.Adapter.DeleteCommand.Parameters[2].Value = ((string)(Original_nombre));
-            }
-            if ((Original_clave == null)) {
-                this.Adapter.DeleteCommand.Parameters[3].Value = ((object)(1));
-                this.Adapter.DeleteCommand.Parameters[4].Value = global::System.DBNull.Value;
-            }
-            else {
-                this.Adapter.DeleteCommand.Parameters[3].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[4].Value = ((string)(Original_clave));
             }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
             if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open) 
@@ -1392,54 +1556,26 @@ namespace UsandoDataGridView.usuarioDataSetTableAdapters {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(string nombre, string clave) {
-            if ((nombre == null)) {
-                this.Adapter.InsertCommand.Parameters[0].Value = global::System.DBNull.Value;
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[0].Value = ((string)(nombre));
-            }
-            if ((clave == null)) {
-                this.Adapter.InsertCommand.Parameters[1].Value = global::System.DBNull.Value;
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[1].Value = ((string)(clave));
-            }
-            global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
-            if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
-                        != global::System.Data.ConnectionState.Open)) {
-                this.Adapter.InsertCommand.Connection.Open();
-            }
-            try {
-                int returnValue = this.Adapter.InsertCommand.ExecuteNonQuery();
-                return returnValue;
-            }
-            finally {
-                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
-                    this.Adapter.InsertCommand.Connection.Close();
-                }
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(string nombre, string clave, int Original_Id, string Original_nombre, string Original_clave) {
-            if ((nombre == null)) {
+        public virtual int Update(string nif, string nombre, string Original_nif, string Original_nombre) {
+            if ((nif == null)) {
                 this.Adapter.UpdateCommand.Parameters[0].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[0].Value = ((string)(nombre));
+                this.Adapter.UpdateCommand.Parameters[0].Value = ((string)(nif));
             }
-            if ((clave == null)) {
+            if ((nombre == null)) {
                 this.Adapter.UpdateCommand.Parameters[1].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[1].Value = ((string)(clave));
+                this.Adapter.UpdateCommand.Parameters[1].Value = ((string)(nombre));
             }
-            this.Adapter.UpdateCommand.Parameters[2].Value = ((int)(Original_Id));
+            if ((Original_nif == null)) {
+                this.Adapter.UpdateCommand.Parameters[2].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[2].Value = ((string)(Original_nif));
+            }
             if ((Original_nombre == null)) {
                 this.Adapter.UpdateCommand.Parameters[3].Value = ((object)(1));
                 this.Adapter.UpdateCommand.Parameters[4].Value = global::System.DBNull.Value;
@@ -1447,14 +1583,6 @@ namespace UsandoDataGridView.usuarioDataSetTableAdapters {
             else {
                 this.Adapter.UpdateCommand.Parameters[3].Value = ((object)(0));
                 this.Adapter.UpdateCommand.Parameters[4].Value = ((string)(Original_nombre));
-            }
-            if ((Original_clave == null)) {
-                this.Adapter.UpdateCommand.Parameters[5].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[6].Value = global::System.DBNull.Value;
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[5].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[6].Value = ((string)(Original_clave));
             }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
             if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
@@ -1470,6 +1598,14 @@ namespace UsandoDataGridView.usuarioDataSetTableAdapters {
                     this.Adapter.UpdateCommand.Connection.Close();
                 }
             }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
+        public virtual int Update(string nombre, string Original_nif, string Original_nombre) {
+            return this.Update(Original_nif, nombre, Original_nif, Original_nombre);
         }
     }
     
@@ -1482,7 +1618,7 @@ namespace UsandoDataGridView.usuarioDataSetTableAdapters {
     [global::System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner" +
         ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
     [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-    public partial class usuarioTableAdapter : global::System.ComponentModel.Component {
+    public partial class NotasTableAdapter : global::System.ComponentModel.Component {
         
         private global::System.Data.OleDb.OleDbDataAdapter _adapter;
         
@@ -1496,7 +1632,7 @@ namespace UsandoDataGridView.usuarioDataSetTableAdapters {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        public usuarioTableAdapter() {
+        public NotasTableAdapter() {
             this.ClearBeforeFill = true;
         }
         
@@ -1593,47 +1729,80 @@ namespace UsandoDataGridView.usuarioDataSetTableAdapters {
             this._adapter = new global::System.Data.OleDb.OleDbDataAdapter();
             global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
             tableMapping.SourceTable = "Table";
-            tableMapping.DataSetTable = "usuario";
-            tableMapping.ColumnMappings.Add("Id", "Id");
-            tableMapping.ColumnMappings.Add("usuario", "usuario");
-            tableMapping.ColumnMappings.Add("clave", "clave");
+            tableMapping.DataSetTable = "Notas";
+            tableMapping.ColumnMappings.Add("nifAlumno", "nifAlumno");
+            tableMapping.ColumnMappings.Add("periodo", "periodo");
+            tableMapping.ColumnMappings.Add("fol", "fol");
+            tableMapping.ColumnMappings.Add("ret", "ret");
+            tableMapping.ColumnMappings.Add("ina", "ina");
+            tableMapping.ColumnMappings.Add("fpr", "fpr");
+            tableMapping.ColumnMappings.Add("ral", "ral");
+            tableMapping.ColumnMappings.Add("sim", "sim");
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::System.Data.OleDb.OleDbCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
-            this._adapter.DeleteCommand.CommandText = "DELETE FROM `usuario` WHERE ((`Id` = ?) AND ((? = 1 AND `usuario` IS NULL) OR (`u" +
-                "suario` = ?)) AND ((? = 1 AND `clave` IS NULL) OR (`clave` = ?)))";
+            this._adapter.DeleteCommand.CommandText = @"DELETE FROM `Notas` WHERE ((`nifAlumno` = ?) AND (`periodo` = ?) AND ((? = 1 AND `fol` IS NULL) OR (`fol` = ?)) AND ((? = 1 AND `ret` IS NULL) OR (`ret` = ?)) AND ((? = 1 AND `ina` IS NULL) OR (`ina` = ?)) AND ((? = 1 AND `fpr` IS NULL) OR (`fpr` = ?)) AND ((? = 1 AND `ral` IS NULL) OR (`ral` = ?)) AND ((? = 1 AND `sim` IS NULL) OR (`sim` = ?)))";
             this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_Id", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Id", global::System.Data.DataRowVersion.Original, false, null));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_usuario", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "usuario", global::System.Data.DataRowVersion.Original, true, null));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_usuario", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "usuario", global::System.Data.DataRowVersion.Original, false, null));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_clave", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "clave", global::System.Data.DataRowVersion.Original, true, null));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_clave", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "clave", global::System.Data.DataRowVersion.Original, false, null));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_nifAlumno", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "nifAlumno", global::System.Data.DataRowVersion.Original, false, null));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_periodo", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "periodo", global::System.Data.DataRowVersion.Original, false, null));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_fol", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "fol", global::System.Data.DataRowVersion.Original, true, null));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_fol", global::System.Data.OleDb.OleDbType.UnsignedTinyInt, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "fol", global::System.Data.DataRowVersion.Original, false, null));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_ret", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "ret", global::System.Data.DataRowVersion.Original, true, null));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_ret", global::System.Data.OleDb.OleDbType.UnsignedTinyInt, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "ret", global::System.Data.DataRowVersion.Original, false, null));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_ina", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "ina", global::System.Data.DataRowVersion.Original, true, null));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_ina", global::System.Data.OleDb.OleDbType.UnsignedTinyInt, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "ina", global::System.Data.DataRowVersion.Original, false, null));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_fpr", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "fpr", global::System.Data.DataRowVersion.Original, true, null));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_fpr", global::System.Data.OleDb.OleDbType.UnsignedTinyInt, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "fpr", global::System.Data.DataRowVersion.Original, false, null));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_ral", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "ral", global::System.Data.DataRowVersion.Original, true, null));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_ral", global::System.Data.OleDb.OleDbType.UnsignedTinyInt, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "ral", global::System.Data.DataRowVersion.Original, false, null));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_sim", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "sim", global::System.Data.DataRowVersion.Original, true, null));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_sim", global::System.Data.OleDb.OleDbType.UnsignedTinyInt, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "sim", global::System.Data.DataRowVersion.Original, false, null));
             this._adapter.InsertCommand = new global::System.Data.OleDb.OleDbCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = "INSERT INTO `usuario` (`usuario`, `clave`) VALUES (?, ?)";
+            this._adapter.InsertCommand.CommandText = "INSERT INTO `Notas` (`nifAlumno`, `periodo`, `fol`, `ret`, `ina`, `fpr`, `ral`, `" +
+                "sim`) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("usuario", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "usuario", global::System.Data.DataRowVersion.Current, false, null));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("clave", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "clave", global::System.Data.DataRowVersion.Current, false, null));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("nifAlumno", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "nifAlumno", global::System.Data.DataRowVersion.Current, false, null));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("periodo", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "periodo", global::System.Data.DataRowVersion.Current, false, null));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("fol", global::System.Data.OleDb.OleDbType.UnsignedTinyInt, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "fol", global::System.Data.DataRowVersion.Current, false, null));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("ret", global::System.Data.OleDb.OleDbType.UnsignedTinyInt, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "ret", global::System.Data.DataRowVersion.Current, false, null));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("ina", global::System.Data.OleDb.OleDbType.UnsignedTinyInt, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "ina", global::System.Data.DataRowVersion.Current, false, null));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("fpr", global::System.Data.OleDb.OleDbType.UnsignedTinyInt, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "fpr", global::System.Data.DataRowVersion.Current, false, null));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("ral", global::System.Data.OleDb.OleDbType.UnsignedTinyInt, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "ral", global::System.Data.DataRowVersion.Current, false, null));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("sim", global::System.Data.OleDb.OleDbType.UnsignedTinyInt, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "sim", global::System.Data.DataRowVersion.Current, false, null));
             this._adapter.UpdateCommand = new global::System.Data.OleDb.OleDbCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = "UPDATE `usuario` SET `usuario` = ?, `clave` = ? WHERE ((`Id` = ?) AND ((? = 1 AND" +
-                " `usuario` IS NULL) OR (`usuario` = ?)) AND ((? = 1 AND `clave` IS NULL) OR (`cl" +
-                "ave` = ?)))";
+            this._adapter.UpdateCommand.CommandText = @"UPDATE `Notas` SET `nifAlumno` = ?, `periodo` = ?, `fol` = ?, `ret` = ?, `ina` = ?, `fpr` = ?, `ral` = ?, `sim` = ? WHERE ((`nifAlumno` = ?) AND (`periodo` = ?) AND ((? = 1 AND `fol` IS NULL) OR (`fol` = ?)) AND ((? = 1 AND `ret` IS NULL) OR (`ret` = ?)) AND ((? = 1 AND `ina` IS NULL) OR (`ina` = ?)) AND ((? = 1 AND `fpr` IS NULL) OR (`fpr` = ?)) AND ((? = 1 AND `ral` IS NULL) OR (`ral` = ?)) AND ((? = 1 AND `sim` IS NULL) OR (`sim` = ?)))";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("usuario", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "usuario", global::System.Data.DataRowVersion.Current, false, null));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("clave", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "clave", global::System.Data.DataRowVersion.Current, false, null));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_Id", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Id", global::System.Data.DataRowVersion.Original, false, null));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_usuario", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "usuario", global::System.Data.DataRowVersion.Original, true, null));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_usuario", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "usuario", global::System.Data.DataRowVersion.Original, false, null));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_clave", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "clave", global::System.Data.DataRowVersion.Original, true, null));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_clave", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "clave", global::System.Data.DataRowVersion.Original, false, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("nifAlumno", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "nifAlumno", global::System.Data.DataRowVersion.Current, false, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("periodo", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "periodo", global::System.Data.DataRowVersion.Current, false, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("fol", global::System.Data.OleDb.OleDbType.UnsignedTinyInt, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "fol", global::System.Data.DataRowVersion.Current, false, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("ret", global::System.Data.OleDb.OleDbType.UnsignedTinyInt, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "ret", global::System.Data.DataRowVersion.Current, false, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("ina", global::System.Data.OleDb.OleDbType.UnsignedTinyInt, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "ina", global::System.Data.DataRowVersion.Current, false, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("fpr", global::System.Data.OleDb.OleDbType.UnsignedTinyInt, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "fpr", global::System.Data.DataRowVersion.Current, false, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("ral", global::System.Data.OleDb.OleDbType.UnsignedTinyInt, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "ral", global::System.Data.DataRowVersion.Current, false, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("sim", global::System.Data.OleDb.OleDbType.UnsignedTinyInt, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "sim", global::System.Data.DataRowVersion.Current, false, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_nifAlumno", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "nifAlumno", global::System.Data.DataRowVersion.Original, false, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_periodo", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "periodo", global::System.Data.DataRowVersion.Original, false, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_fol", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "fol", global::System.Data.DataRowVersion.Original, true, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_fol", global::System.Data.OleDb.OleDbType.UnsignedTinyInt, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "fol", global::System.Data.DataRowVersion.Original, false, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_ret", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "ret", global::System.Data.DataRowVersion.Original, true, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_ret", global::System.Data.OleDb.OleDbType.UnsignedTinyInt, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "ret", global::System.Data.DataRowVersion.Original, false, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_ina", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "ina", global::System.Data.DataRowVersion.Original, true, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_ina", global::System.Data.OleDb.OleDbType.UnsignedTinyInt, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "ina", global::System.Data.DataRowVersion.Original, false, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_fpr", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "fpr", global::System.Data.DataRowVersion.Original, true, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_fpr", global::System.Data.OleDb.OleDbType.UnsignedTinyInt, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "fpr", global::System.Data.DataRowVersion.Original, false, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_ral", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "ral", global::System.Data.DataRowVersion.Original, true, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_ral", global::System.Data.OleDb.OleDbType.UnsignedTinyInt, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "ral", global::System.Data.DataRowVersion.Original, false, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_sim", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "sim", global::System.Data.DataRowVersion.Original, true, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_sim", global::System.Data.OleDb.OleDbType.UnsignedTinyInt, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "sim", global::System.Data.DataRowVersion.Original, false, null));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.OleDb.OleDbConnection();
-            this._connection.ConnectionString = global::UsandoDataGridView.Properties.Settings.Default.usuarioConnectionString;
+            this._connection.ConnectionString = global::NotasProyecto.Properties.Settings.Default.evaluaConnectionString;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1642,7 +1811,7 @@ namespace UsandoDataGridView.usuarioDataSetTableAdapters {
             this._commandCollection = new global::System.Data.OleDb.OleDbCommand[1];
             this._commandCollection[0] = new global::System.Data.OleDb.OleDbCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT Id, usuario, clave FROM usuario";
+            this._commandCollection[0].CommandText = "SELECT nifAlumno, periodo, fol, ret, ina, fpr, ral, sim FROM Notas";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
@@ -1650,7 +1819,7 @@ namespace UsandoDataGridView.usuarioDataSetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(usuarioDataSet.usuarioDataTable dataTable) {
+        public virtual int Fill(evaluaDataSet2.NotasDataTable dataTable) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
@@ -1663,9 +1832,9 @@ namespace UsandoDataGridView.usuarioDataSetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual usuarioDataSet.usuarioDataTable GetData() {
+        public virtual evaluaDataSet2.NotasDataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            usuarioDataSet.usuarioDataTable dataTable = new usuarioDataSet.usuarioDataTable();
+            evaluaDataSet2.NotasDataTable dataTable = new evaluaDataSet2.NotasDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
         }
@@ -1673,15 +1842,15 @@ namespace UsandoDataGridView.usuarioDataSetTableAdapters {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(usuarioDataSet.usuarioDataTable dataTable) {
+        public virtual int Update(evaluaDataSet2.NotasDataTable dataTable) {
             return this.Adapter.Update(dataTable);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(usuarioDataSet dataSet) {
-            return this.Adapter.Update(dataSet, "usuario");
+        public virtual int Update(evaluaDataSet2 dataSet) {
+            return this.Adapter.Update(dataSet, "Notas");
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1703,23 +1872,66 @@ namespace UsandoDataGridView.usuarioDataSetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
-        public virtual int Delete(int Original_Id, string Original_usuario, string Original_clave) {
-            this.Adapter.DeleteCommand.Parameters[0].Value = ((int)(Original_Id));
-            if ((Original_usuario == null)) {
-                this.Adapter.DeleteCommand.Parameters[1].Value = ((object)(1));
-                this.Adapter.DeleteCommand.Parameters[2].Value = global::System.DBNull.Value;
+        public virtual int Delete(string Original_nifAlumno, string Original_periodo, global::System.Nullable<byte> Original_fol, global::System.Nullable<byte> Original_ret, global::System.Nullable<byte> Original_ina, global::System.Nullable<byte> Original_fpr, global::System.Nullable<byte> Original_ral, global::System.Nullable<byte> Original_sim) {
+            if ((Original_nifAlumno == null)) {
+                this.Adapter.DeleteCommand.Parameters[0].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.DeleteCommand.Parameters[1].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[2].Value = ((string)(Original_usuario));
+                this.Adapter.DeleteCommand.Parameters[0].Value = ((string)(Original_nifAlumno));
             }
-            if ((Original_clave == null)) {
-                this.Adapter.DeleteCommand.Parameters[3].Value = ((object)(1));
-                this.Adapter.DeleteCommand.Parameters[4].Value = global::System.DBNull.Value;
+            if ((Original_periodo == null)) {
+                this.Adapter.DeleteCommand.Parameters[1].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.DeleteCommand.Parameters[3].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[4].Value = ((string)(Original_clave));
+                this.Adapter.DeleteCommand.Parameters[1].Value = ((string)(Original_periodo));
+            }
+            if ((Original_fol.HasValue == true)) {
+                this.Adapter.DeleteCommand.Parameters[2].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[3].Value = ((byte)(Original_fol.Value));
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[2].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[3].Value = global::System.DBNull.Value;
+            }
+            if ((Original_ret.HasValue == true)) {
+                this.Adapter.DeleteCommand.Parameters[4].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[5].Value = ((byte)(Original_ret.Value));
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[4].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[5].Value = global::System.DBNull.Value;
+            }
+            if ((Original_ina.HasValue == true)) {
+                this.Adapter.DeleteCommand.Parameters[6].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[7].Value = ((byte)(Original_ina.Value));
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[6].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[7].Value = global::System.DBNull.Value;
+            }
+            if ((Original_fpr.HasValue == true)) {
+                this.Adapter.DeleteCommand.Parameters[8].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[9].Value = ((byte)(Original_fpr.Value));
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[8].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[9].Value = global::System.DBNull.Value;
+            }
+            if ((Original_ral.HasValue == true)) {
+                this.Adapter.DeleteCommand.Parameters[10].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[11].Value = ((byte)(Original_ral.Value));
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[10].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[11].Value = global::System.DBNull.Value;
+            }
+            if ((Original_sim.HasValue == true)) {
+                this.Adapter.DeleteCommand.Parameters[12].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[13].Value = ((byte)(Original_sim.Value));
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[12].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[13].Value = global::System.DBNull.Value;
             }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
             if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open) 
@@ -1741,18 +1953,54 @@ namespace UsandoDataGridView.usuarioDataSetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(string usuario, string clave) {
-            if ((usuario == null)) {
+        public virtual int Insert(string nifAlumno, string periodo, global::System.Nullable<byte> fol, global::System.Nullable<byte> ret, global::System.Nullable<byte> ina, global::System.Nullable<byte> fpr, global::System.Nullable<byte> ral, global::System.Nullable<byte> sim) {
+            if ((nifAlumno == null)) {
                 this.Adapter.InsertCommand.Parameters[0].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.InsertCommand.Parameters[0].Value = ((string)(usuario));
+                this.Adapter.InsertCommand.Parameters[0].Value = ((string)(nifAlumno));
             }
-            if ((clave == null)) {
+            if ((periodo == null)) {
                 this.Adapter.InsertCommand.Parameters[1].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.InsertCommand.Parameters[1].Value = ((string)(clave));
+                this.Adapter.InsertCommand.Parameters[1].Value = ((string)(periodo));
+            }
+            if ((fol.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[2].Value = ((byte)(fol.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[2].Value = global::System.DBNull.Value;
+            }
+            if ((ret.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[3].Value = ((byte)(ret.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[3].Value = global::System.DBNull.Value;
+            }
+            if ((ina.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[4].Value = ((byte)(ina.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[4].Value = global::System.DBNull.Value;
+            }
+            if ((fpr.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[5].Value = ((byte)(fpr.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[5].Value = global::System.DBNull.Value;
+            }
+            if ((ral.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[6].Value = ((byte)(ral.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[6].Value = global::System.DBNull.Value;
+            }
+            if ((sim.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[7].Value = ((byte)(sim.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[7].Value = global::System.DBNull.Value;
             }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
             if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
@@ -1774,35 +2022,130 @@ namespace UsandoDataGridView.usuarioDataSetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(string usuario, string clave, int Original_Id, string Original_usuario, string Original_clave) {
-            if ((usuario == null)) {
+        public virtual int Update(
+                    string nifAlumno, 
+                    string periodo, 
+                    global::System.Nullable<byte> fol, 
+                    global::System.Nullable<byte> ret, 
+                    global::System.Nullable<byte> ina, 
+                    global::System.Nullable<byte> fpr, 
+                    global::System.Nullable<byte> ral, 
+                    global::System.Nullable<byte> sim, 
+                    string Original_nifAlumno, 
+                    string Original_periodo, 
+                    global::System.Nullable<byte> Original_fol, 
+                    global::System.Nullable<byte> Original_ret, 
+                    global::System.Nullable<byte> Original_ina, 
+                    global::System.Nullable<byte> Original_fpr, 
+                    global::System.Nullable<byte> Original_ral, 
+                    global::System.Nullable<byte> Original_sim) {
+            if ((nifAlumno == null)) {
                 this.Adapter.UpdateCommand.Parameters[0].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[0].Value = ((string)(usuario));
+                this.Adapter.UpdateCommand.Parameters[0].Value = ((string)(nifAlumno));
             }
-            if ((clave == null)) {
+            if ((periodo == null)) {
                 this.Adapter.UpdateCommand.Parameters[1].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[1].Value = ((string)(clave));
+                this.Adapter.UpdateCommand.Parameters[1].Value = ((string)(periodo));
             }
-            this.Adapter.UpdateCommand.Parameters[2].Value = ((int)(Original_Id));
-            if ((Original_usuario == null)) {
-                this.Adapter.UpdateCommand.Parameters[3].Value = ((object)(1));
+            if ((fol.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[2].Value = ((byte)(fol.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[2].Value = global::System.DBNull.Value;
+            }
+            if ((ret.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[3].Value = ((byte)(ret.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[3].Value = global::System.DBNull.Value;
+            }
+            if ((ina.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[4].Value = ((byte)(ina.Value));
+            }
+            else {
                 this.Adapter.UpdateCommand.Parameters[4].Value = global::System.DBNull.Value;
             }
-            else {
-                this.Adapter.UpdateCommand.Parameters[3].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[4].Value = ((string)(Original_usuario));
+            if ((fpr.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[5].Value = ((byte)(fpr.Value));
             }
-            if ((Original_clave == null)) {
-                this.Adapter.UpdateCommand.Parameters[5].Value = ((object)(1));
+            else {
+                this.Adapter.UpdateCommand.Parameters[5].Value = global::System.DBNull.Value;
+            }
+            if ((ral.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[6].Value = ((byte)(ral.Value));
+            }
+            else {
                 this.Adapter.UpdateCommand.Parameters[6].Value = global::System.DBNull.Value;
             }
+            if ((sim.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[7].Value = ((byte)(sim.Value));
+            }
             else {
-                this.Adapter.UpdateCommand.Parameters[5].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[6].Value = ((string)(Original_clave));
+                this.Adapter.UpdateCommand.Parameters[7].Value = global::System.DBNull.Value;
+            }
+            if ((Original_nifAlumno == null)) {
+                this.Adapter.UpdateCommand.Parameters[8].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[8].Value = ((string)(Original_nifAlumno));
+            }
+            if ((Original_periodo == null)) {
+                this.Adapter.UpdateCommand.Parameters[9].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[9].Value = ((string)(Original_periodo));
+            }
+            if ((Original_fol.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[10].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[11].Value = ((byte)(Original_fol.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[10].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[11].Value = global::System.DBNull.Value;
+            }
+            if ((Original_ret.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[12].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[13].Value = ((byte)(Original_ret.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[12].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[13].Value = global::System.DBNull.Value;
+            }
+            if ((Original_ina.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[14].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[15].Value = ((byte)(Original_ina.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[14].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[15].Value = global::System.DBNull.Value;
+            }
+            if ((Original_fpr.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[16].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[17].Value = ((byte)(Original_fpr.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[16].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[17].Value = global::System.DBNull.Value;
+            }
+            if ((Original_ral.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[18].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[19].Value = ((byte)(Original_ral.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[18].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[19].Value = global::System.DBNull.Value;
+            }
+            if ((Original_sim.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[20].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[21].Value = ((byte)(Original_sim.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[20].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[21].Value = global::System.DBNull.Value;
             }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
             if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
@@ -1818,6 +2161,14 @@ namespace UsandoDataGridView.usuarioDataSetTableAdapters {
                     this.Adapter.UpdateCommand.Connection.Close();
                 }
             }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
+        public virtual int Update(global::System.Nullable<byte> fol, global::System.Nullable<byte> ret, global::System.Nullable<byte> ina, global::System.Nullable<byte> fpr, global::System.Nullable<byte> ral, global::System.Nullable<byte> sim, string Original_nifAlumno, string Original_periodo, global::System.Nullable<byte> Original_fol, global::System.Nullable<byte> Original_ret, global::System.Nullable<byte> Original_ina, global::System.Nullable<byte> Original_fpr, global::System.Nullable<byte> Original_ral, global::System.Nullable<byte> Original_sim) {
+            return this.Update(Original_nifAlumno, Original_periodo, fol, ret, ina, fpr, ral, sim, Original_nifAlumno, Original_periodo, Original_fol, Original_ret, Original_ina, Original_fpr, Original_ral, Original_sim);
         }
     }
     
@@ -1833,9 +2184,9 @@ namespace UsandoDataGridView.usuarioDataSetTableAdapters {
         
         private UpdateOrderOption _updateOrder;
         
-        private Copia_de_usuarioTableAdapter _copia_de_usuarioTableAdapter;
+        private AlumnosTableAdapter _alumnosTableAdapter;
         
-        private usuarioTableAdapter _usuarioTableAdapter;
+        private NotasTableAdapter _notasTableAdapter;
         
         private bool _backupDataSetBeforeUpdate;
         
@@ -1857,12 +2208,12 @@ namespace UsandoDataGridView.usuarioDataSetTableAdapters {
         [global::System.ComponentModel.EditorAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterManagerPropertyEditor, Microso" +
             "ft.VSDesigner, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3" +
             "a", "System.Drawing.Design.UITypeEditor")]
-        public Copia_de_usuarioTableAdapter Copia_de_usuarioTableAdapter {
+        public AlumnosTableAdapter AlumnosTableAdapter {
             get {
-                return this._copia_de_usuarioTableAdapter;
+                return this._alumnosTableAdapter;
             }
             set {
-                this._copia_de_usuarioTableAdapter = value;
+                this._alumnosTableAdapter = value;
             }
         }
         
@@ -1871,12 +2222,12 @@ namespace UsandoDataGridView.usuarioDataSetTableAdapters {
         [global::System.ComponentModel.EditorAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterManagerPropertyEditor, Microso" +
             "ft.VSDesigner, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3" +
             "a", "System.Drawing.Design.UITypeEditor")]
-        public usuarioTableAdapter usuarioTableAdapter {
+        public NotasTableAdapter NotasTableAdapter {
             get {
-                return this._usuarioTableAdapter;
+                return this._notasTableAdapter;
             }
             set {
-                this._usuarioTableAdapter = value;
+                this._notasTableAdapter = value;
             }
         }
         
@@ -1899,13 +2250,13 @@ namespace UsandoDataGridView.usuarioDataSetTableAdapters {
                 if ((this._connection != null)) {
                     return this._connection;
                 }
-                if (((this._copia_de_usuarioTableAdapter != null) 
-                            && (this._copia_de_usuarioTableAdapter.Connection != null))) {
-                    return this._copia_de_usuarioTableAdapter.Connection;
+                if (((this._alumnosTableAdapter != null) 
+                            && (this._alumnosTableAdapter.Connection != null))) {
+                    return this._alumnosTableAdapter.Connection;
                 }
-                if (((this._usuarioTableAdapter != null) 
-                            && (this._usuarioTableAdapter.Connection != null))) {
-                    return this._usuarioTableAdapter.Connection;
+                if (((this._notasTableAdapter != null) 
+                            && (this._notasTableAdapter.Connection != null))) {
+                    return this._notasTableAdapter.Connection;
                 }
                 return null;
             }
@@ -1920,10 +2271,10 @@ namespace UsandoDataGridView.usuarioDataSetTableAdapters {
         public int TableAdapterInstanceCount {
             get {
                 int count = 0;
-                if ((this._copia_de_usuarioTableAdapter != null)) {
+                if ((this._alumnosTableAdapter != null)) {
                     count = (count + 1);
                 }
-                if ((this._usuarioTableAdapter != null)) {
+                if ((this._notasTableAdapter != null)) {
                     count = (count + 1);
                 }
                 return count;
@@ -1935,23 +2286,23 @@ namespace UsandoDataGridView.usuarioDataSetTableAdapters {
         ///</summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        private int UpdateUpdatedRows(usuarioDataSet dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
+        private int UpdateUpdatedRows(evaluaDataSet2 dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
             int result = 0;
-            if ((this._copia_de_usuarioTableAdapter != null)) {
-                global::System.Data.DataRow[] updatedRows = dataSet.Copia_de_usuario.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+            if ((this._alumnosTableAdapter != null)) {
+                global::System.Data.DataRow[] updatedRows = dataSet.Alumnos.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
                 updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
                 if (((updatedRows != null) 
                             && (0 < updatedRows.Length))) {
-                    result = (result + this._copia_de_usuarioTableAdapter.Update(updatedRows));
+                    result = (result + this._alumnosTableAdapter.Update(updatedRows));
                     allChangedRows.AddRange(updatedRows);
                 }
             }
-            if ((this._usuarioTableAdapter != null)) {
-                global::System.Data.DataRow[] updatedRows = dataSet.usuario.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+            if ((this._notasTableAdapter != null)) {
+                global::System.Data.DataRow[] updatedRows = dataSet.Notas.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
                 updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
                 if (((updatedRows != null) 
                             && (0 < updatedRows.Length))) {
-                    result = (result + this._usuarioTableAdapter.Update(updatedRows));
+                    result = (result + this._notasTableAdapter.Update(updatedRows));
                     allChangedRows.AddRange(updatedRows);
                 }
             }
@@ -1963,21 +2314,21 @@ namespace UsandoDataGridView.usuarioDataSetTableAdapters {
         ///</summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        private int UpdateInsertedRows(usuarioDataSet dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
+        private int UpdateInsertedRows(evaluaDataSet2 dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
             int result = 0;
-            if ((this._copia_de_usuarioTableAdapter != null)) {
-                global::System.Data.DataRow[] addedRows = dataSet.Copia_de_usuario.Select(null, null, global::System.Data.DataViewRowState.Added);
+            if ((this._alumnosTableAdapter != null)) {
+                global::System.Data.DataRow[] addedRows = dataSet.Alumnos.Select(null, null, global::System.Data.DataViewRowState.Added);
                 if (((addedRows != null) 
                             && (0 < addedRows.Length))) {
-                    result = (result + this._copia_de_usuarioTableAdapter.Update(addedRows));
+                    result = (result + this._alumnosTableAdapter.Update(addedRows));
                     allAddedRows.AddRange(addedRows);
                 }
             }
-            if ((this._usuarioTableAdapter != null)) {
-                global::System.Data.DataRow[] addedRows = dataSet.usuario.Select(null, null, global::System.Data.DataViewRowState.Added);
+            if ((this._notasTableAdapter != null)) {
+                global::System.Data.DataRow[] addedRows = dataSet.Notas.Select(null, null, global::System.Data.DataViewRowState.Added);
                 if (((addedRows != null) 
                             && (0 < addedRows.Length))) {
-                    result = (result + this._usuarioTableAdapter.Update(addedRows));
+                    result = (result + this._notasTableAdapter.Update(addedRows));
                     allAddedRows.AddRange(addedRows);
                 }
             }
@@ -1989,21 +2340,21 @@ namespace UsandoDataGridView.usuarioDataSetTableAdapters {
         ///</summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        private int UpdateDeletedRows(usuarioDataSet dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows) {
+        private int UpdateDeletedRows(evaluaDataSet2 dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows) {
             int result = 0;
-            if ((this._usuarioTableAdapter != null)) {
-                global::System.Data.DataRow[] deletedRows = dataSet.usuario.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+            if ((this._notasTableAdapter != null)) {
+                global::System.Data.DataRow[] deletedRows = dataSet.Notas.Select(null, null, global::System.Data.DataViewRowState.Deleted);
                 if (((deletedRows != null) 
                             && (0 < deletedRows.Length))) {
-                    result = (result + this._usuarioTableAdapter.Update(deletedRows));
+                    result = (result + this._notasTableAdapter.Update(deletedRows));
                     allChangedRows.AddRange(deletedRows);
                 }
             }
-            if ((this._copia_de_usuarioTableAdapter != null)) {
-                global::System.Data.DataRow[] deletedRows = dataSet.Copia_de_usuario.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+            if ((this._alumnosTableAdapter != null)) {
+                global::System.Data.DataRow[] deletedRows = dataSet.Alumnos.Select(null, null, global::System.Data.DataViewRowState.Deleted);
                 if (((deletedRows != null) 
                             && (0 < deletedRows.Length))) {
-                    result = (result + this._copia_de_usuarioTableAdapter.Update(deletedRows));
+                    result = (result + this._alumnosTableAdapter.Update(deletedRows));
                     allChangedRows.AddRange(deletedRows);
                 }
             }
@@ -2039,20 +2390,20 @@ namespace UsandoDataGridView.usuarioDataSetTableAdapters {
         ///</summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        public virtual int UpdateAll(usuarioDataSet dataSet) {
+        public virtual int UpdateAll(evaluaDataSet2 dataSet) {
             if ((dataSet == null)) {
                 throw new global::System.ArgumentNullException("dataSet");
             }
             if ((dataSet.HasChanges() == false)) {
                 return 0;
             }
-            if (((this._copia_de_usuarioTableAdapter != null) 
-                        && (this.MatchTableAdapterConnection(this._copia_de_usuarioTableAdapter.Connection) == false))) {
+            if (((this._alumnosTableAdapter != null) 
+                        && (this.MatchTableAdapterConnection(this._alumnosTableAdapter.Connection) == false))) {
                 throw new global::System.ArgumentException("Todos los TableAdapters administrados por un TableAdapterManager deben usar la mi" +
                         "sma cadena de conexión.");
             }
-            if (((this._usuarioTableAdapter != null) 
-                        && (this.MatchTableAdapterConnection(this._usuarioTableAdapter.Connection) == false))) {
+            if (((this._notasTableAdapter != null) 
+                        && (this.MatchTableAdapterConnection(this._notasTableAdapter.Connection) == false))) {
                 throw new global::System.ArgumentException("Todos los TableAdapters administrados por un TableAdapterManager deben usar la mi" +
                         "sma cadena de conexión.");
             }
@@ -2088,22 +2439,22 @@ namespace UsandoDataGridView.usuarioDataSetTableAdapters {
             try {
                 // ---- Prepare for update -----------
                 //
-                if ((this._copia_de_usuarioTableAdapter != null)) {
-                    revertConnections.Add(this._copia_de_usuarioTableAdapter, this._copia_de_usuarioTableAdapter.Connection);
-                    this._copia_de_usuarioTableAdapter.Connection = ((global::System.Data.OleDb.OleDbConnection)(workConnection));
-                    this._copia_de_usuarioTableAdapter.Transaction = ((global::System.Data.OleDb.OleDbTransaction)(workTransaction));
-                    if (this._copia_de_usuarioTableAdapter.Adapter.AcceptChangesDuringUpdate) {
-                        this._copia_de_usuarioTableAdapter.Adapter.AcceptChangesDuringUpdate = false;
-                        adaptersWithAcceptChangesDuringUpdate.Add(this._copia_de_usuarioTableAdapter.Adapter);
+                if ((this._alumnosTableAdapter != null)) {
+                    revertConnections.Add(this._alumnosTableAdapter, this._alumnosTableAdapter.Connection);
+                    this._alumnosTableAdapter.Connection = ((global::System.Data.OleDb.OleDbConnection)(workConnection));
+                    this._alumnosTableAdapter.Transaction = ((global::System.Data.OleDb.OleDbTransaction)(workTransaction));
+                    if (this._alumnosTableAdapter.Adapter.AcceptChangesDuringUpdate) {
+                        this._alumnosTableAdapter.Adapter.AcceptChangesDuringUpdate = false;
+                        adaptersWithAcceptChangesDuringUpdate.Add(this._alumnosTableAdapter.Adapter);
                     }
                 }
-                if ((this._usuarioTableAdapter != null)) {
-                    revertConnections.Add(this._usuarioTableAdapter, this._usuarioTableAdapter.Connection);
-                    this._usuarioTableAdapter.Connection = ((global::System.Data.OleDb.OleDbConnection)(workConnection));
-                    this._usuarioTableAdapter.Transaction = ((global::System.Data.OleDb.OleDbTransaction)(workTransaction));
-                    if (this._usuarioTableAdapter.Adapter.AcceptChangesDuringUpdate) {
-                        this._usuarioTableAdapter.Adapter.AcceptChangesDuringUpdate = false;
-                        adaptersWithAcceptChangesDuringUpdate.Add(this._usuarioTableAdapter.Adapter);
+                if ((this._notasTableAdapter != null)) {
+                    revertConnections.Add(this._notasTableAdapter, this._notasTableAdapter.Connection);
+                    this._notasTableAdapter.Connection = ((global::System.Data.OleDb.OleDbConnection)(workConnection));
+                    this._notasTableAdapter.Transaction = ((global::System.Data.OleDb.OleDbTransaction)(workTransaction));
+                    if (this._notasTableAdapter.Adapter.AcceptChangesDuringUpdate) {
+                        this._notasTableAdapter.Adapter.AcceptChangesDuringUpdate = false;
+                        adaptersWithAcceptChangesDuringUpdate.Add(this._notasTableAdapter.Adapter);
                     }
                 }
                 // 
@@ -2164,13 +2515,13 @@ namespace UsandoDataGridView.usuarioDataSetTableAdapters {
                 if (workConnOpened) {
                     workConnection.Close();
                 }
-                if ((this._copia_de_usuarioTableAdapter != null)) {
-                    this._copia_de_usuarioTableAdapter.Connection = ((global::System.Data.OleDb.OleDbConnection)(revertConnections[this._copia_de_usuarioTableAdapter]));
-                    this._copia_de_usuarioTableAdapter.Transaction = null;
+                if ((this._alumnosTableAdapter != null)) {
+                    this._alumnosTableAdapter.Connection = ((global::System.Data.OleDb.OleDbConnection)(revertConnections[this._alumnosTableAdapter]));
+                    this._alumnosTableAdapter.Transaction = null;
                 }
-                if ((this._usuarioTableAdapter != null)) {
-                    this._usuarioTableAdapter.Connection = ((global::System.Data.OleDb.OleDbConnection)(revertConnections[this._usuarioTableAdapter]));
-                    this._usuarioTableAdapter.Transaction = null;
+                if ((this._notasTableAdapter != null)) {
+                    this._notasTableAdapter.Connection = ((global::System.Data.OleDb.OleDbConnection)(revertConnections[this._notasTableAdapter]));
+                    this._notasTableAdapter.Transaction = null;
                 }
                 if ((0 < adaptersWithAcceptChangesDuringUpdate.Count)) {
                     global::System.Data.Common.DataAdapter[] adapters = new System.Data.Common.DataAdapter[adaptersWithAcceptChangesDuringUpdate.Count];

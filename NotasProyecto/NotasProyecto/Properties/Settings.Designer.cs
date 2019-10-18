@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace UsandoDataGridView.Properties {
+namespace NotasProyecto.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
@@ -26,10 +26,11 @@ namespace UsandoDataGridView.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Provider=Microsoft.ACE.OLEDB.12.0;Data Source=|DataDirectory|\\usuario.accdb")]
-        public string usuarioConnectionString {
+        [global::System.Configuration.DefaultSettingValueAttribute("Provider=Microsoft.ACE.OLEDB.12.0;Data Source=|DataDirectory|\\evalua.accdb;Persis" +
+            "t Security Info=True")]
+        public string evaluaConnectionString {
             get {
-                return ((string)(this["usuarioConnectionString"]));
+                return ((string)(this["evaluaConnectionString"]));
             }
         }
     }
