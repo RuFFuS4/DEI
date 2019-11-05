@@ -44,6 +44,8 @@ namespace PracticaFinal
             visualizarPanel(pLogin);
             /*El menú en el login no se ve*/
             menu.Visible = false;
+            /*Posicionamos en el centro de la pantalla la ventana*/
+            this.StartPosition = FormStartPosition.CenterScreen;
         }
 
         /*========LOGIN===================================================*/
@@ -261,6 +263,78 @@ namespace PracticaFinal
                     pBajaUsuario.Visible = false;
                     pBajaUsuario.Visible = true;
                 }
+            }
+        }
+        private void pModificarUsuario_VisibleChanged(object sender, EventArgs e)
+        {
+            if (pModificarUsuario.Visible)
+            {
+                //Se cargan los datos del combobox
+                string consulta = "SELECT Id,Nombre FROM Usuario";
+                manejarDatos = new OleDbCommand(consulta, conexion);
+                datos = manejarDatos.ExecuteReader();
+
+                cargarComboBox(cbNombreMU, 2, true);
+
+                //Se limpia el combobox para que no se repitan los valores
+                cbPerfilMU.Items.Clear();
+                /*Se cargan los datos del combobox
+                 * -Para que esto funcione debe haber al menos un usuario de cada perfil
+                 * en la base de datos para poder cargarlo en el combobox. La otra opción
+                 * sería guardar en un array los tipos de perfiles.
+                 */
+                if (perfilesPrimeraVez)
+                {
+                    consulta = "SELECT DISTINCT perfil FROM Usuario";
+                    manejarDatos = new OleDbCommand(consulta, conexion);
+                    datos = manejarDatos.ExecuteReader();
+
+                    if (datos.HasRows)
+                    {
+                        /*Añado al combobox los perfiles*/
+                        while (datos.Read())
+                        {
+                            perfiles.Add(datos.GetInt32(0));
+                        }
+                    }
+                    perfilesPrimeraVez = false;
+                }
+
+                foreach (Int32 i in perfiles)
+                {
+                    cbPerfilMU.Items.Add(i);
+                }
+                cbPerfilMU.SelectedIndex = 0;
+
+                /*Se deshabilitan los componentes necesarios*/
+                cbPerfilMU.Enabled = false;
+                tbContrasenaMU.Enabled = false;
+                this.Visible = true;
+            }
+        }
+        private void cbNombreMU_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            condition = "Id =" + (cbNombreMU.SelectedItem as ListItem).Value.ToString();
+            List<Object> valores = obtenerRegistro("Usuario",condition,4,new List<Int32>{0,3});//4 campos y primero y ultimo son enteros
+            tbContrasenaMU.Text = valores[2].ToString();
+            cbPerfilMU.SelectedItem = Convert.ToInt32(valores[3]);
+        }
+        private void btnEditarMU_Click(object sender, EventArgs e)
+        {
+            cbPerfilMU.Enabled = true;
+            tbContrasenaMU.Enabled = true;
+            cbNombreMU.Enabled = false;
+            btnEditarMU.Visible = false;
+        }
+        private void btnConfirmarMU_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("¿Quiere modificar este usuario?", "Modificar", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                /*Cambiamos la visibilidad para recargar los datos*/
+                pModificarUsuario.Visible = false;
+                pModificarUsuario.Visible = true;
+
+                btnEditarMU.Visible = true;
             }
         }
         private void pListarUsuario_VisibleChanged(object sender, EventArgs e)
@@ -661,6 +735,36 @@ namespace PracticaFinal
             manejarDatos.ExecuteNonQuery();
         }
         /*
+         * -Recibe un String que corresponde a la tabla donde se va a obtener
+         * -Recibe un String que corresponde a la condición
+         */
+        private List<Object> obtenerRegistro(String tabla, String condicion,int numCamposRecuperar,List<Int32> camposInt)
+        {
+            /*FORMAMOS LA SENTENCIA*/
+            string sentencia = "SELECT * FROM " + tabla + " WHERE " + condicion;
+
+            manejarDatos = new OleDbCommand(sentencia, conexion);
+            datos = manejarDatos.ExecuteReader();
+
+            List<Object> valores = new List<Object>();
+            if (datos.HasRows)
+            {
+                datos.Read();
+                for (int i=0;i<numCamposRecuperar;i++) {
+                    if (camposInt.Contains(i))
+                    {
+                        valores.Add(datos.GetInt32(i));
+                    }
+                    else
+                    {
+                        valores.Add(datos.GetString(i));
+                    }
+                }
+            }
+
+            return valores;
+        }
+        /*
          * El método recibe una serie de componentes que pone a su estado por defecto 
          */
         private void limpiarComponentes(TextBox[] tbs,ComboBox[] cbs, CheckBox[] chbs) {
@@ -711,7 +815,6 @@ namespace PracticaFinal
             }
             return correcto;
         }
-
         /*===============================================================*/
     }
 }

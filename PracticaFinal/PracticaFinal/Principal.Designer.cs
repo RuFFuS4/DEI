@@ -43,12 +43,17 @@
             this.lbContrasenaU = new System.Windows.Forms.Label();
             this.lbNombreU = new System.Windows.Forms.Label();
             this.lbAltaUsuario = new System.Windows.Forms.Label();
-            this.pModificarUsuario = new System.Windows.Forms.Panel();
             this.pListarUsuario = new System.Windows.Forms.Panel();
             this.gvUsuarios = new System.Windows.Forms.DataGridView();
             this.lbListarUsuarios = new System.Windows.Forms.Label();
             this.pVerNota = new System.Windows.Forms.Panel();
+            this.cbTodosVerNota = new System.Windows.Forms.CheckBox();
+            this.cbPeriodoVerNota = new System.Windows.Forms.ComboBox();
+            this.lsbAlumnosVerNota = new System.Windows.Forms.ListBox();
             this.gvNotas = new System.Windows.Forms.DataGridView();
+            this.lbTodosVerNota = new System.Windows.Forms.Label();
+            this.lbPeriodoVerNota = new System.Windows.Forms.Label();
+            this.lbAlumnosVerNota = new System.Windows.Forms.Label();
             this.lbVerNotas = new System.Windows.Forms.Label();
             this.menu = new System.Windows.Forms.MenuStrip();
             this.usuarioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -98,25 +103,29 @@
             this.cbAlumnoBajaA = new System.Windows.Forms.ComboBox();
             this.lbNombreBajaA = new System.Windows.Forms.Label();
             this.lbBajaAlumno = new System.Windows.Forms.Label();
-            this.lsbAlumnosVerNota = new System.Windows.Forms.ListBox();
-            this.lbAlumnosVerNota = new System.Windows.Forms.Label();
-            this.lbPeriodoVerNota = new System.Windows.Forms.Label();
-            this.cbPeriodoVerNota = new System.Windows.Forms.ComboBox();
-            this.lbTodosVerNota = new System.Windows.Forms.Label();
-            this.cbTodosVerNota = new System.Windows.Forms.CheckBox();
             this.pInsertarNota = new System.Windows.Forms.Panel();
+            this.lbLCInsertarNotas = new System.Windows.Forms.Label();
+            this.lbSGEInsertarNotas = new System.Windows.Forms.Label();
+            this.lbDEIInsertarNotas = new System.Windows.Forms.Label();
+            this.tbLCInsertarNotas = new System.Windows.Forms.TextBox();
+            this.tbSGEInsertarNotas = new System.Windows.Forms.TextBox();
+            this.tbDEIInsertarNota = new System.Windows.Forms.TextBox();
+            this.lbPeriodoInsertarNota = new System.Windows.Forms.Label();
+            this.cbPeriodoInsertarNota = new System.Windows.Forms.ComboBox();
             this.btnInsertarNota = new System.Windows.Forms.Button();
             this.cbAlumnoInsertarNota = new System.Windows.Forms.ComboBox();
             this.lbAlumnoInsertarNota = new System.Windows.Forms.Label();
             this.lbInsertarNota = new System.Windows.Forms.Label();
-            this.cbPeriodoInsertarNota = new System.Windows.Forms.ComboBox();
-            this.lbPeriodoInsertarNota = new System.Windows.Forms.Label();
-            this.tbDEIInsertarNota = new System.Windows.Forms.TextBox();
-            this.tbSGEInsertarNotas = new System.Windows.Forms.TextBox();
-            this.tbLCInsertarNotas = new System.Windows.Forms.TextBox();
-            this.lbDEIInsertarNotas = new System.Windows.Forms.Label();
-            this.lbSGEInsertarNotas = new System.Windows.Forms.Label();
-            this.lbLCInsertarNotas = new System.Windows.Forms.Label();
+            this.pModificarUsuario = new System.Windows.Forms.Panel();
+            this.btnEditarMU = new System.Windows.Forms.Button();
+            this.tbContrasenaMU = new System.Windows.Forms.TextBox();
+            this.cbPerfilMU = new System.Windows.Forms.ComboBox();
+            this.lbPerfilModificarUsuario = new System.Windows.Forms.Label();
+            this.lbContrasenaModificarUsuario = new System.Windows.Forms.Label();
+            this.lbNombreModificarUsuario = new System.Windows.Forms.Label();
+            this.lbModificarUsuario = new System.Windows.Forms.Label();
+            this.cbNombreMU = new System.Windows.Forms.ComboBox();
+            this.btnConfirmarMU = new System.Windows.Forms.Button();
             this.pLogin.SuspendLayout();
             this.pAltaUsuario.SuspendLayout();
             this.pListarUsuario.SuspendLayout();
@@ -133,6 +142,7 @@
             this.pBajaAlumno.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gvBajaA)).BeginInit();
             this.pInsertarNota.SuspendLayout();
+            this.pModificarUsuario.SuspendLayout();
             this.SuspendLayout();
             // 
             // pLogin
@@ -285,14 +295,6 @@
             this.lbAltaUsuario.TabIndex = 4;
             this.lbAltaUsuario.Text = "Alta Usuario";
             // 
-            // pModificarUsuario
-            // 
-            this.pModificarUsuario.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pModificarUsuario.Location = new System.Drawing.Point(0, 0);
-            this.pModificarUsuario.Name = "pModificarUsuario";
-            this.pModificarUsuario.Size = new System.Drawing.Size(615, 337);
-            this.pModificarUsuario.TabIndex = 2;
-            // 
             // pListarUsuario
             // 
             this.pListarUsuario.Controls.Add(this.gvUsuarios);
@@ -339,6 +341,35 @@
             this.pVerNota.TabIndex = 5;
             this.pVerNota.VisibleChanged += new System.EventHandler(this.pVerNota_VisibleChanged);
             // 
+            // cbTodosVerNota
+            // 
+            this.cbTodosVerNota.AutoSize = true;
+            this.cbTodosVerNota.Location = new System.Drawing.Point(180, 74);
+            this.cbTodosVerNota.Name = "cbTodosVerNota";
+            this.cbTodosVerNota.Size = new System.Drawing.Size(15, 14);
+            this.cbTodosVerNota.TabIndex = 9;
+            this.cbTodosVerNota.UseVisualStyleBackColor = true;
+            this.cbTodosVerNota.CheckedChanged += new System.EventHandler(this.cbTodosVerNota_CheckedChanged);
+            // 
+            // cbPeriodoVerNota
+            // 
+            this.cbPeriodoVerNota.FormattingEnabled = true;
+            this.cbPeriodoVerNota.Location = new System.Drawing.Point(448, 70);
+            this.cbPeriodoVerNota.Name = "cbPeriodoVerNota";
+            this.cbPeriodoVerNota.Size = new System.Drawing.Size(152, 21);
+            this.cbPeriodoVerNota.TabIndex = 7;
+            this.cbPeriodoVerNota.SelectedIndexChanged += new System.EventHandler(this.cbPeriodoVerNota_SelectedIndexChanged);
+            // 
+            // lsbAlumnosVerNota
+            // 
+            this.lsbAlumnosVerNota.FormattingEnabled = true;
+            this.lsbAlumnosVerNota.Location = new System.Drawing.Point(24, 60);
+            this.lsbAlumnosVerNota.Name = "lsbAlumnosVerNota";
+            this.lsbAlumnosVerNota.SelectionMode = System.Windows.Forms.SelectionMode.MultiSimple;
+            this.lsbAlumnosVerNota.Size = new System.Drawing.Size(140, 238);
+            this.lsbAlumnosVerNota.TabIndex = 4;
+            this.lsbAlumnosVerNota.SelectedIndexChanged += new System.EventHandler(this.lsbAlumnosVerNota_SelectedIndexChanged);
+            // 
             // gvNotas
             // 
             this.gvNotas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -346,6 +377,36 @@
             this.gvNotas.Name = "gvNotas";
             this.gvNotas.Size = new System.Drawing.Size(425, 187);
             this.gvNotas.TabIndex = 2;
+            // 
+            // lbTodosVerNota
+            // 
+            this.lbTodosVerNota.AutoSize = true;
+            this.lbTodosVerNota.Font = new System.Drawing.Font("Roboto Cn", 15.75F, System.Drawing.FontStyle.Bold);
+            this.lbTodosVerNota.Location = new System.Drawing.Point(201, 67);
+            this.lbTodosVerNota.Name = "lbTodosVerNota";
+            this.lbTodosVerNota.Size = new System.Drawing.Size(61, 25);
+            this.lbTodosVerNota.TabIndex = 8;
+            this.lbTodosVerNota.Text = "Todos";
+            // 
+            // lbPeriodoVerNota
+            // 
+            this.lbPeriodoVerNota.AutoSize = true;
+            this.lbPeriodoVerNota.Font = new System.Drawing.Font("Roboto Cn", 15.75F, System.Drawing.FontStyle.Bold);
+            this.lbPeriodoVerNota.Location = new System.Drawing.Point(350, 67);
+            this.lbPeriodoVerNota.Name = "lbPeriodoVerNota";
+            this.lbPeriodoVerNota.Size = new System.Drawing.Size(76, 25);
+            this.lbPeriodoVerNota.TabIndex = 6;
+            this.lbPeriodoVerNota.Text = "Periodo";
+            // 
+            // lbAlumnosVerNota
+            // 
+            this.lbAlumnosVerNota.AutoSize = true;
+            this.lbAlumnosVerNota.Font = new System.Drawing.Font("Roboto Cn", 15.75F, System.Drawing.FontStyle.Bold);
+            this.lbAlumnosVerNota.Location = new System.Drawing.Point(51, 32);
+            this.lbAlumnosVerNota.Name = "lbAlumnosVerNota";
+            this.lbAlumnosVerNota.Size = new System.Drawing.Size(84, 25);
+            this.lbAlumnosVerNota.TabIndex = 5;
+            this.lbAlumnosVerNota.Text = "Alumnos";
             // 
             // lbVerNotas
             // 
@@ -818,65 +879,6 @@
             this.lbBajaAlumno.TabIndex = 4;
             this.lbBajaAlumno.Text = "Baja Alumno";
             // 
-            // lsbAlumnosVerNota
-            // 
-            this.lsbAlumnosVerNota.FormattingEnabled = true;
-            this.lsbAlumnosVerNota.Location = new System.Drawing.Point(24, 60);
-            this.lsbAlumnosVerNota.Name = "lsbAlumnosVerNota";
-            this.lsbAlumnosVerNota.SelectionMode = System.Windows.Forms.SelectionMode.MultiSimple;
-            this.lsbAlumnosVerNota.Size = new System.Drawing.Size(140, 238);
-            this.lsbAlumnosVerNota.TabIndex = 4;
-            this.lsbAlumnosVerNota.SelectedIndexChanged += new System.EventHandler(this.lsbAlumnosVerNota_SelectedIndexChanged);
-            // 
-            // lbAlumnosVerNota
-            // 
-            this.lbAlumnosVerNota.AutoSize = true;
-            this.lbAlumnosVerNota.Font = new System.Drawing.Font("Roboto Cn", 15.75F, System.Drawing.FontStyle.Bold);
-            this.lbAlumnosVerNota.Location = new System.Drawing.Point(51, 32);
-            this.lbAlumnosVerNota.Name = "lbAlumnosVerNota";
-            this.lbAlumnosVerNota.Size = new System.Drawing.Size(84, 25);
-            this.lbAlumnosVerNota.TabIndex = 5;
-            this.lbAlumnosVerNota.Text = "Alumnos";
-            // 
-            // lbPeriodoVerNota
-            // 
-            this.lbPeriodoVerNota.AutoSize = true;
-            this.lbPeriodoVerNota.Font = new System.Drawing.Font("Roboto Cn", 15.75F, System.Drawing.FontStyle.Bold);
-            this.lbPeriodoVerNota.Location = new System.Drawing.Point(350, 67);
-            this.lbPeriodoVerNota.Name = "lbPeriodoVerNota";
-            this.lbPeriodoVerNota.Size = new System.Drawing.Size(76, 25);
-            this.lbPeriodoVerNota.TabIndex = 6;
-            this.lbPeriodoVerNota.Text = "Periodo";
-            // 
-            // cbPeriodoVerNota
-            // 
-            this.cbPeriodoVerNota.FormattingEnabled = true;
-            this.cbPeriodoVerNota.Location = new System.Drawing.Point(448, 70);
-            this.cbPeriodoVerNota.Name = "cbPeriodoVerNota";
-            this.cbPeriodoVerNota.Size = new System.Drawing.Size(152, 21);
-            this.cbPeriodoVerNota.TabIndex = 7;
-            this.cbPeriodoVerNota.SelectedIndexChanged += new System.EventHandler(this.cbPeriodoVerNota_SelectedIndexChanged);
-            // 
-            // lbTodosVerNota
-            // 
-            this.lbTodosVerNota.AutoSize = true;
-            this.lbTodosVerNota.Font = new System.Drawing.Font("Roboto Cn", 15.75F, System.Drawing.FontStyle.Bold);
-            this.lbTodosVerNota.Location = new System.Drawing.Point(201, 67);
-            this.lbTodosVerNota.Name = "lbTodosVerNota";
-            this.lbTodosVerNota.Size = new System.Drawing.Size(61, 25);
-            this.lbTodosVerNota.TabIndex = 8;
-            this.lbTodosVerNota.Text = "Todos";
-            // 
-            // cbTodosVerNota
-            // 
-            this.cbTodosVerNota.AutoSize = true;
-            this.cbTodosVerNota.Location = new System.Drawing.Point(180, 74);
-            this.cbTodosVerNota.Name = "cbTodosVerNota";
-            this.cbTodosVerNota.Size = new System.Drawing.Size(15, 14);
-            this.cbTodosVerNota.TabIndex = 9;
-            this.cbTodosVerNota.UseVisualStyleBackColor = true;
-            this.cbTodosVerNota.CheckedChanged += new System.EventHandler(this.cbTodosVerNota_CheckedChanged);
-            // 
             // pInsertarNota
             // 
             this.pInsertarNota.Controls.Add(this.lbLCInsertarNotas);
@@ -897,6 +899,78 @@
             this.pInsertarNota.Size = new System.Drawing.Size(615, 337);
             this.pInsertarNota.TabIndex = 9;
             this.pInsertarNota.VisibleChanged += new System.EventHandler(this.pInsertarNota_VisibleChanged);
+            // 
+            // lbLCInsertarNotas
+            // 
+            this.lbLCInsertarNotas.AutoSize = true;
+            this.lbLCInsertarNotas.Font = new System.Drawing.Font("Roboto Cn", 15.75F, System.Drawing.FontStyle.Bold);
+            this.lbLCInsertarNotas.Location = new System.Drawing.Point(486, 213);
+            this.lbLCInsertarNotas.Name = "lbLCInsertarNotas";
+            this.lbLCInsertarNotas.Size = new System.Drawing.Size(34, 25);
+            this.lbLCInsertarNotas.TabIndex = 21;
+            this.lbLCInsertarNotas.Text = "LC";
+            // 
+            // lbSGEInsertarNotas
+            // 
+            this.lbSGEInsertarNotas.AutoSize = true;
+            this.lbSGEInsertarNotas.Font = new System.Drawing.Font("Roboto Cn", 15.75F, System.Drawing.FontStyle.Bold);
+            this.lbSGEInsertarNotas.Location = new System.Drawing.Point(291, 213);
+            this.lbSGEInsertarNotas.Name = "lbSGEInsertarNotas";
+            this.lbSGEInsertarNotas.Size = new System.Drawing.Size(45, 25);
+            this.lbSGEInsertarNotas.TabIndex = 20;
+            this.lbSGEInsertarNotas.Text = "SGE";
+            // 
+            // lbDEIInsertarNotas
+            // 
+            this.lbDEIInsertarNotas.AutoSize = true;
+            this.lbDEIInsertarNotas.Font = new System.Drawing.Font("Roboto Cn", 15.75F, System.Drawing.FontStyle.Bold);
+            this.lbDEIInsertarNotas.Location = new System.Drawing.Point(108, 214);
+            this.lbDEIInsertarNotas.Name = "lbDEIInsertarNotas";
+            this.lbDEIInsertarNotas.Size = new System.Drawing.Size(40, 25);
+            this.lbDEIInsertarNotas.TabIndex = 19;
+            this.lbDEIInsertarNotas.Text = "DEI";
+            // 
+            // tbLCInsertarNotas
+            // 
+            this.tbLCInsertarNotas.Location = new System.Drawing.Point(461, 241);
+            this.tbLCInsertarNotas.Multiline = true;
+            this.tbLCInsertarNotas.Name = "tbLCInsertarNotas";
+            this.tbLCInsertarNotas.Size = new System.Drawing.Size(83, 43);
+            this.tbLCInsertarNotas.TabIndex = 18;
+            // 
+            // tbSGEInsertarNotas
+            // 
+            this.tbSGEInsertarNotas.Location = new System.Drawing.Point(275, 241);
+            this.tbSGEInsertarNotas.Multiline = true;
+            this.tbSGEInsertarNotas.Name = "tbSGEInsertarNotas";
+            this.tbSGEInsertarNotas.Size = new System.Drawing.Size(83, 43);
+            this.tbSGEInsertarNotas.TabIndex = 17;
+            // 
+            // tbDEIInsertarNota
+            // 
+            this.tbDEIInsertarNota.Location = new System.Drawing.Point(89, 241);
+            this.tbDEIInsertarNota.Multiline = true;
+            this.tbDEIInsertarNota.Name = "tbDEIInsertarNota";
+            this.tbDEIInsertarNota.Size = new System.Drawing.Size(83, 43);
+            this.tbDEIInsertarNota.TabIndex = 16;
+            // 
+            // lbPeriodoInsertarNota
+            // 
+            this.lbPeriodoInsertarNota.AutoSize = true;
+            this.lbPeriodoInsertarNota.Font = new System.Drawing.Font("Roboto Cn", 15.75F, System.Drawing.FontStyle.Bold);
+            this.lbPeriodoInsertarNota.Location = new System.Drawing.Point(83, 156);
+            this.lbPeriodoInsertarNota.Name = "lbPeriodoInsertarNota";
+            this.lbPeriodoInsertarNota.Size = new System.Drawing.Size(82, 25);
+            this.lbPeriodoInsertarNota.TabIndex = 14;
+            this.lbPeriodoInsertarNota.Text = "Periodo:";
+            // 
+            // cbPeriodoInsertarNota
+            // 
+            this.cbPeriodoInsertarNota.FormattingEnabled = true;
+            this.cbPeriodoInsertarNota.Location = new System.Drawing.Point(197, 160);
+            this.cbPeriodoInsertarNota.Name = "cbPeriodoInsertarNota";
+            this.cbPeriodoInsertarNota.Size = new System.Drawing.Size(161, 21);
+            this.cbPeriodoInsertarNota.TabIndex = 13;
             // 
             // btnInsertarNota
             // 
@@ -937,87 +1011,120 @@
             this.lbInsertarNota.TabIndex = 4;
             this.lbInsertarNota.Text = "Insertar Nota";
             // 
-            // cbPeriodoInsertarNota
+            // pModificarUsuario
             // 
-            this.cbPeriodoInsertarNota.FormattingEnabled = true;
-            this.cbPeriodoInsertarNota.Location = new System.Drawing.Point(197, 160);
-            this.cbPeriodoInsertarNota.Name = "cbPeriodoInsertarNota";
-            this.cbPeriodoInsertarNota.Size = new System.Drawing.Size(161, 21);
-            this.cbPeriodoInsertarNota.TabIndex = 13;
+            this.pModificarUsuario.Controls.Add(this.btnEditarMU);
+            this.pModificarUsuario.Controls.Add(this.btnConfirmarMU);
+            this.pModificarUsuario.Controls.Add(this.cbNombreMU);
+            this.pModificarUsuario.Controls.Add(this.tbContrasenaMU);
+            this.pModificarUsuario.Controls.Add(this.cbPerfilMU);
+            this.pModificarUsuario.Controls.Add(this.lbPerfilModificarUsuario);
+            this.pModificarUsuario.Controls.Add(this.lbContrasenaModificarUsuario);
+            this.pModificarUsuario.Controls.Add(this.lbNombreModificarUsuario);
+            this.pModificarUsuario.Controls.Add(this.lbModificarUsuario);
+            this.pModificarUsuario.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pModificarUsuario.Location = new System.Drawing.Point(0, 24);
+            this.pModificarUsuario.Name = "pModificarUsuario";
+            this.pModificarUsuario.Size = new System.Drawing.Size(615, 313);
+            this.pModificarUsuario.TabIndex = 10;
+            this.pModificarUsuario.VisibleChanged += new System.EventHandler(this.pModificarUsuario_VisibleChanged);
             // 
-            // lbPeriodoInsertarNota
+            // btnEditarMU
             // 
-            this.lbPeriodoInsertarNota.AutoSize = true;
-            this.lbPeriodoInsertarNota.Font = new System.Drawing.Font("Roboto Cn", 15.75F, System.Drawing.FontStyle.Bold);
-            this.lbPeriodoInsertarNota.Location = new System.Drawing.Point(83, 156);
-            this.lbPeriodoInsertarNota.Name = "lbPeriodoInsertarNota";
-            this.lbPeriodoInsertarNota.Size = new System.Drawing.Size(82, 25);
-            this.lbPeriodoInsertarNota.TabIndex = 14;
-            this.lbPeriodoInsertarNota.Text = "Periodo:";
+            this.btnEditarMU.Font = new System.Drawing.Font("Roboto Cn", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEditarMU.Location = new System.Drawing.Point(448, 221);
+            this.btnEditarMU.Name = "btnEditarMU";
+            this.btnEditarMU.Size = new System.Drawing.Size(117, 57);
+            this.btnEditarMU.TabIndex = 12;
+            this.btnEditarMU.Text = "Editar";
+            this.btnEditarMU.UseVisualStyleBackColor = true;
+            this.btnEditarMU.Click += new System.EventHandler(this.btnEditarMU_Click);
             // 
-            // tbDEIInsertarNota
+            // tbContrasenaMU
             // 
-            this.tbDEIInsertarNota.Location = new System.Drawing.Point(89, 241);
-            this.tbDEIInsertarNota.Multiline = true;
-            this.tbDEIInsertarNota.Name = "tbDEIInsertarNota";
-            this.tbDEIInsertarNota.Size = new System.Drawing.Size(83, 43);
-            this.tbDEIInsertarNota.TabIndex = 16;
+            this.tbContrasenaMU.Enabled = false;
+            this.tbContrasenaMU.Location = new System.Drawing.Point(206, 209);
+            this.tbContrasenaMU.Name = "tbContrasenaMU";
+            this.tbContrasenaMU.Size = new System.Drawing.Size(127, 20);
+            this.tbContrasenaMU.TabIndex = 10;
             // 
-            // tbSGEInsertarNotas
+            // cbPerfilMU
             // 
-            this.tbSGEInsertarNotas.Location = new System.Drawing.Point(275, 241);
-            this.tbSGEInsertarNotas.Multiline = true;
-            this.tbSGEInsertarNotas.Name = "tbSGEInsertarNotas";
-            this.tbSGEInsertarNotas.Size = new System.Drawing.Size(83, 43);
-            this.tbSGEInsertarNotas.TabIndex = 17;
+            this.cbPerfilMU.Enabled = false;
+            this.cbPerfilMU.FormattingEnabled = true;
+            this.cbPerfilMU.Location = new System.Drawing.Point(404, 123);
+            this.cbPerfilMU.Name = "cbPerfilMU";
+            this.cbPerfilMU.Size = new System.Drawing.Size(161, 21);
+            this.cbPerfilMU.TabIndex = 8;
             // 
-            // tbLCInsertarNotas
+            // lbPerfilModificarUsuario
             // 
-            this.tbLCInsertarNotas.Location = new System.Drawing.Point(461, 241);
-            this.tbLCInsertarNotas.Multiline = true;
-            this.tbLCInsertarNotas.Name = "tbLCInsertarNotas";
-            this.tbLCInsertarNotas.Size = new System.Drawing.Size(83, 43);
-            this.tbLCInsertarNotas.TabIndex = 18;
+            this.lbPerfilModificarUsuario.AutoSize = true;
+            this.lbPerfilModificarUsuario.Font = new System.Drawing.Font("Roboto Cn", 15.75F, System.Drawing.FontStyle.Bold);
+            this.lbPerfilModificarUsuario.Location = new System.Drawing.Point(456, 94);
+            this.lbPerfilModificarUsuario.Name = "lbPerfilModificarUsuario";
+            this.lbPerfilModificarUsuario.Size = new System.Drawing.Size(58, 25);
+            this.lbPerfilModificarUsuario.TabIndex = 7;
+            this.lbPerfilModificarUsuario.Text = "Perfil";
             // 
-            // lbDEIInsertarNotas
+            // lbContrasenaModificarUsuario
             // 
-            this.lbDEIInsertarNotas.AutoSize = true;
-            this.lbDEIInsertarNotas.Font = new System.Drawing.Font("Roboto Cn", 15.75F, System.Drawing.FontStyle.Bold);
-            this.lbDEIInsertarNotas.Location = new System.Drawing.Point(108, 214);
-            this.lbDEIInsertarNotas.Name = "lbDEIInsertarNotas";
-            this.lbDEIInsertarNotas.Size = new System.Drawing.Size(40, 25);
-            this.lbDEIInsertarNotas.TabIndex = 19;
-            this.lbDEIInsertarNotas.Text = "DEI";
+            this.lbContrasenaModificarUsuario.AutoSize = true;
+            this.lbContrasenaModificarUsuario.Font = new System.Drawing.Font("Roboto Cn", 15.75F, System.Drawing.FontStyle.Bold);
+            this.lbContrasenaModificarUsuario.Location = new System.Drawing.Point(83, 203);
+            this.lbContrasenaModificarUsuario.Name = "lbContrasenaModificarUsuario";
+            this.lbContrasenaModificarUsuario.Size = new System.Drawing.Size(113, 25);
+            this.lbContrasenaModificarUsuario.TabIndex = 6;
+            this.lbContrasenaModificarUsuario.Text = "Contraseña:";
             // 
-            // lbSGEInsertarNotas
+            // lbNombreModificarUsuario
             // 
-            this.lbSGEInsertarNotas.AutoSize = true;
-            this.lbSGEInsertarNotas.Font = new System.Drawing.Font("Roboto Cn", 15.75F, System.Drawing.FontStyle.Bold);
-            this.lbSGEInsertarNotas.Location = new System.Drawing.Point(291, 213);
-            this.lbSGEInsertarNotas.Name = "lbSGEInsertarNotas";
-            this.lbSGEInsertarNotas.Size = new System.Drawing.Size(45, 25);
-            this.lbSGEInsertarNotas.TabIndex = 20;
-            this.lbSGEInsertarNotas.Text = "SGE";
+            this.lbNombreModificarUsuario.AutoSize = true;
+            this.lbNombreModificarUsuario.Font = new System.Drawing.Font("Roboto Cn", 15.75F, System.Drawing.FontStyle.Bold);
+            this.lbNombreModificarUsuario.Location = new System.Drawing.Point(83, 120);
+            this.lbNombreModificarUsuario.Name = "lbNombreModificarUsuario";
+            this.lbNombreModificarUsuario.Size = new System.Drawing.Size(89, 25);
+            this.lbNombreModificarUsuario.TabIndex = 5;
+            this.lbNombreModificarUsuario.Text = "Nombre: ";
             // 
-            // lbLCInsertarNotas
+            // lbModificarUsuario
             // 
-            this.lbLCInsertarNotas.AutoSize = true;
-            this.lbLCInsertarNotas.Font = new System.Drawing.Font("Roboto Cn", 15.75F, System.Drawing.FontStyle.Bold);
-            this.lbLCInsertarNotas.Location = new System.Drawing.Point(486, 213);
-            this.lbLCInsertarNotas.Name = "lbLCInsertarNotas";
-            this.lbLCInsertarNotas.Size = new System.Drawing.Size(34, 25);
-            this.lbLCInsertarNotas.TabIndex = 21;
-            this.lbLCInsertarNotas.Text = "LC";
+            this.lbModificarUsuario.AutoSize = true;
+            this.lbModificarUsuario.Font = new System.Drawing.Font("Roboto Cn", 15.75F, System.Drawing.FontStyle.Bold);
+            this.lbModificarUsuario.Location = new System.Drawing.Point(226, 35);
+            this.lbModificarUsuario.Name = "lbModificarUsuario";
+            this.lbModificarUsuario.Size = new System.Drawing.Size(159, 25);
+            this.lbModificarUsuario.TabIndex = 4;
+            this.lbModificarUsuario.Text = "Modificar Usuario";
+            // 
+            // cbNombreMU
+            // 
+            this.cbNombreMU.FormattingEnabled = true;
+            this.cbNombreMU.Location = new System.Drawing.Point(175, 123);
+            this.cbNombreMU.Name = "cbNombreMU";
+            this.cbNombreMU.Size = new System.Drawing.Size(161, 21);
+            this.cbNombreMU.TabIndex = 13;
+            this.cbNombreMU.SelectedIndexChanged += new System.EventHandler(this.cbNombreMU_SelectedIndexChanged);
+            // 
+            // btnConfirmarMU
+            // 
+            this.btnConfirmarMU.Font = new System.Drawing.Font("Roboto Cn", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnConfirmarMU.Location = new System.Drawing.Point(448, 221);
+            this.btnConfirmarMU.Name = "btnConfirmarMU";
+            this.btnConfirmarMU.Size = new System.Drawing.Size(117, 57);
+            this.btnConfirmarMU.TabIndex = 14;
+            this.btnConfirmarMU.Text = "Confirmar";
+            this.btnConfirmarMU.UseVisualStyleBackColor = true;
+            this.btnConfirmarMU.Click += new System.EventHandler(this.btnConfirmarMU_Click);
             // 
             // misNotas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(615, 337);
+            this.Controls.Add(this.pModificarUsuario);
             this.Controls.Add(this.pLogin);
             this.Controls.Add(this.menu);
-            this.Controls.Add(this.pInsertarNota);
-            this.Controls.Add(this.pVerNota);
             this.Controls.Add(this.pIntermedio);
             this.Controls.Add(this.pAltaAlumno);
             this.Controls.Add(this.pBajaAlumno);
@@ -1025,8 +1132,9 @@
             this.Controls.Add(this.pListarAlumno);
             this.Controls.Add(this.pAltaUsuario);
             this.Controls.Add(this.pBajaUsuario);
-            this.Controls.Add(this.pModificarUsuario);
             this.Controls.Add(this.pListarUsuario);
+            this.Controls.Add(this.pVerNota);
+            this.Controls.Add(this.pInsertarNota);
             this.MainMenuStrip = this.menu;
             this.Name = "misNotas";
             this.Text = "Mis Notas";
@@ -1056,6 +1164,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.gvBajaA)).EndInit();
             this.pInsertarNota.ResumeLayout(false);
             this.pInsertarNota.PerformLayout();
+            this.pModificarUsuario.ResumeLayout(false);
+            this.pModificarUsuario.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1067,7 +1177,6 @@
         private System.Windows.Forms.TextBox tbPass;
         private System.Windows.Forms.TextBox tbUser;
         private System.Windows.Forms.Panel pAltaUsuario;
-        private System.Windows.Forms.Panel pModificarUsuario;
         private System.Windows.Forms.Panel pListarUsuario;
         private System.Windows.Forms.Panel pVerNota;
         private System.Windows.Forms.Label lbPass;
@@ -1152,6 +1261,16 @@
         private System.Windows.Forms.TextBox tbLCInsertarNotas;
         private System.Windows.Forms.TextBox tbSGEInsertarNotas;
         private System.Windows.Forms.TextBox tbDEIInsertarNota;
+        private System.Windows.Forms.Panel pModificarUsuario;
+        private System.Windows.Forms.ComboBox cbNombreMU;
+        private System.Windows.Forms.Button btnEditarMU;
+        private System.Windows.Forms.TextBox tbContrasenaMU;
+        private System.Windows.Forms.ComboBox cbPerfilMU;
+        private System.Windows.Forms.Label lbPerfilModificarUsuario;
+        private System.Windows.Forms.Label lbContrasenaModificarUsuario;
+        private System.Windows.Forms.Label lbNombreModificarUsuario;
+        private System.Windows.Forms.Label lbModificarUsuario;
+        private System.Windows.Forms.Button btnConfirmarMU;
     }
 }
 
