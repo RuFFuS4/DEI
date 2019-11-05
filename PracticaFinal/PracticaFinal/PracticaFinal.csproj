@@ -68,6 +68,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ListItem.cs" />
     <Compile Include="Principal.cs">
       <SubType>Form</SubType>
     </Compile>

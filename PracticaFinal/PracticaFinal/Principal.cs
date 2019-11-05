@@ -6,6 +6,7 @@ using System.Data.OleDb;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -19,6 +20,10 @@ namespace PracticaFinal
         private OleDbDataAdapter adaptador;
         private OleDbCommandBuilder constructor;
         private static List<Panel>panelesAplicacion = new List<Panel>();//Nº paneles aplicación
+        private List<Int32> perfiles = new List<Int32>();//Distintos perfiles
+        private Boolean perfilesPrimeraVez = true;//Necesario para cargar los perfiles correctamente
+        private String condition = ""; //Variable que variaremos para las condiciones de las busquedas
+        private String usuarioLogueado = "";
 
         public misNotas()
         {
@@ -53,7 +58,6 @@ namespace PracticaFinal
 
             if (datos.HasRows)
             { 
-                visualizarPanel(pAltaUsuario);
                 int perfil=0;
                 while (datos.Read()) {
                      perfil= datos.GetInt32(3);
@@ -62,6 +66,8 @@ namespace PracticaFinal
                 menu.Visible = true;
                 manejoMenu(perfil,menu);
 
+                /*Guardo el nombre del usuario logueado para no poder borrarlo por ejemplo*/
+                usuarioLogueado = tbUser.Text;
                 /*Limpio la password para que si vuelvo a la pantalla de login
                  * no aparezca ninguna contraseña puesta
                  */
@@ -70,6 +76,7 @@ namespace PracticaFinal
             }
             else {
                 MessageBox.Show("No ha introducido bien el usuario o contraseña.");
+                conexion.Close();
             }
         }
         /*===============================================================*/
@@ -154,19 +161,33 @@ namespace PracticaFinal
             {
                 //Se limpia el combobox para que no se repitan los valores
                 cbPerfilU.Items.Clear();
+                /*Se cargan los datos del combobox
+                 * -Para que esto funcione debe haber al menos un usuario de cada perfil
+                 * en la base de datos para poder cargarlo en el combobox. La otra opción
+                 * sería guardar en un array los tipos de perfiles.
+                 */
+                if (perfilesPrimeraVez) {
+                    string consulta = "SELECT DISTINCT perfil FROM Usuario";
+                    manejarDatos = new OleDbCommand(consulta, conexion);
+                    datos = manejarDatos.ExecuteReader();
 
-                string consulta = "SELECT DISTINCT perfil FROM Usuario";
-                manejarDatos = new OleDbCommand(consulta, conexion);
-                datos = manejarDatos.ExecuteReader();
-
-                if (datos.HasRows)
-                {
-                    /*Añado al combobox los perfiles*/
-                    while (datos.Read())
+                    if (datos.HasRows)
                     {
-                        cbPerfilU.Items.Add(datos.GetInt32(0));
+                        /*Añado al combobox los perfiles*/
+                        while (datos.Read())
+                        {
+                            perfiles.Add(datos.GetInt32(0));
+                        }
                     }
+                    perfilesPrimeraVez = false;
                 }
+
+                foreach (Int32 i in perfiles) {
+                    cbPerfilU.Items.Add(i);
+                }
+                cbPerfilU.SelectedIndex = 0;
+                //Se ponen todos los campos por defecto
+                limpiarComponentes(new TextBox[] {tbNombreU,tbContrasenaU},null,null);
             } 
         }
         private void btnAnadirU_Click(object sender, EventArgs e)
@@ -185,26 +206,61 @@ namespace PracticaFinal
                     }
                 }
                 /*Compruebo que no exista el nombre*/
-                if (!nombresUsuarios.Contains(nombreIntroducido)) {
+                if (nombresUsuarios.Contains(nombreIntroducido)) {
+                    /*Limpiamos campo nombre y mostramos un mensaje*/
+                    limpiarComponentes(new TextBox[] { tbNombreU }, null,null);
+                    MessageBox.Show("Ya existe el usuario " + nombreIntroducido);
+                }
+                else {
                     String[] valores = new String[3];
                     valores[0] = "'" + tbNombreU.Text + "'";
                     valores[1] = "'" + tbContrasenaU.Text + "'";
                     valores[2] = cbPerfilU.SelectedIndex.ToString();
 
-                    anadirRegistro("Usuario",new String[] {"Nombre","Contrasena","Perfil"} ,valores);
+                    anadirRegistro("Usuario", new String[] { "Nombre", "Contrasena", "Perfil" }, valores);
 
                     /*Limpiamos los valores y mostramos un mensaje*/
-                    limpiarComponentes(new TextBox[] {tbNombreU, tbContrasenaU }, new ComboBox[] { cbPerfilU });
+                    limpiarComponentes(new TextBox[] { tbNombreU, tbContrasenaU }, new ComboBox[] { cbPerfilU },null);
                     MessageBox.Show("Se ha introducido correctamente el Usuario");
-                }
-                else {
-                    /*Limpiamos campo nombre y mostramos un mensaje*/
-                    limpiarComponentes(new TextBox[] {tbNombreU}, null);
-                    MessageBox.Show("Ya existe el usuario "+nombreIntroducido);
                 }
             }
             else {
                 MessageBox.Show("Deben estar todos los datos rellenos");
+            }
+        }
+        private void pBajaUsuario_VisibleChanged(object sender, EventArgs e)
+        {
+            if (pBajaUsuario.Visible)
+            {
+                //Se cargan los datos del combobox
+                string consulta = "SELECT Id,Nombre FROM Usuario";
+                manejarDatos = new OleDbCommand(consulta, conexion);
+                datos = manejarDatos.ExecuteReader();
+
+                cargarComboBox(cbNombreBajaU,2,true);
+            }
+        }
+        private void cbNombreBajaU_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            String consultaTabla = "Usuario";
+            condition = " WHERE Id="+ (cbNombreBajaU.SelectedItem as ListItem).Value.ToString();
+            cargarDatos(gvBajaU, consultaTabla, condition,true, new int[] { 0 });
+        }
+        private void btnEliminarU_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("¿Quiere eliminar este usuario?", "Eliminar", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                if (usuarioLogueado.Equals(cbNombreBajaU.Text))
+                {
+                    MessageBox.Show("El usuario esta logueado, no puede ser borrado");
+                }
+                else {
+                    condition = "Id ="+ (cbNombreBajaU.SelectedItem as ListItem).Value.ToString();
+                    borrarRegistro("Usuario", condition);
+                    /*Cambiamos la visibilidad para recargar los datos*/
+                    pBajaUsuario.Visible = false;
+                    pBajaUsuario.Visible = true;
+                }
             }
         }
         private void pListarUsuario_VisibleChanged(object sender, EventArgs e)
@@ -212,18 +268,118 @@ namespace PracticaFinal
             if (pListarUsuario.Visible)
             {
                 String consultaTabla = "Usuario";
-                cargarDatos(gvUsuarios, consultaTabla, true, new int[]{0});
+                cargarDatos(gvUsuarios, consultaTabla,"", true, new int[]{0});
             }
         }
         /*=========================================================================*/
 
         /*=======ALUMNOS============================================================*/
+        private void pAltaAlumno_VisibleChanged(object sender, EventArgs e)
+        {
+            //Se ponen todos los campos por defecto
+            limpiarComponentes(new TextBox[] { tbNIFA, tbNombreA, tbApellido1A, tbApellido2A }, null, new CheckBox[] { cbBajaA });
+            tbNIFA.Text = "00000000A";
+            tbNIFA.ForeColor = Color.Gray;
+        }
+        /*Al perder el foco del componente se comprueba la validez del dni*/
+        private void tbNIFA_Leave(object sender, EventArgs e)
+        {
+            if (!compruebaDNI(tbNIFA.Text))
+            {
+                MessageBox.Show("Debe introducir un DNI válido\nFormato: 00000000A");
+                tbNIFA.Text = "";
+            }
+        }
+        /*Si al coger el foco del componente está el texto por defecto se borra*/
+        private void tbNIFA_Enter(object sender, EventArgs e)
+        {
+            if (tbNIFA.Text.Equals("00000000A")) {
+                tbNIFA.Text = "";
+                tbNIFA.ForeColor = Color.Black;
+            }
+        }
+        private void btnAnadirA_Click(object sender, EventArgs e)
+        {
+            if (!tbNombreA.Text.Equals("") && !tbApellido1A.Text.Equals("") && !tbApellido2A.Text.Equals("")
+                && !tbNIFA.Text.Equals(""))
+            {
+                String dniIntroducido = tbNIFA.Text;
+                List<String> dniAlumnos = new List<String>();
+                manejarDatos = new OleDbCommand("SELECT NIF FROM Alumno", conexion);
+                datos = manejarDatos.ExecuteReader();
+
+                if (datos.HasRows)
+                {
+                    while (datos.Read())
+                    {
+                        dniAlumnos.Add(datos.GetString(0));
+                    }
+                }
+                /*Compruebo que no exista el dni*/
+                if (dniAlumnos.Contains(dniIntroducido))
+                {
+                    /*Limpiamos campo nombre y mostramos un mensaje*/
+                    limpiarComponentes(new TextBox[] { tbNIFA }, null,null);
+                    MessageBox.Show("Ya existe un alumno con DNI: " + dniIntroducido);
+                }
+                else
+                {
+                    String[] valores = new String[4];
+                    valores[0] = "'" + tbNIFA.Text + "'";
+                    valores[1] = "'" + tbNombreA.Text + "'";
+                    valores[2] = "'" + tbApellido1A.Text + " " + tbApellido2A.Text + "'";
+                    valores[3] = cbBajaA.Checked.ToString();
+
+                    anadirRegistro("Alumno", new String[] { "NIF", "Nombre", "Apellidos", "Baja" }, valores);
+
+                    /*Limpiamos los valores y mostramos un mensaje*/
+                    limpiarComponentes(new TextBox[] { tbNIFA,tbNombreA,tbApellido1A,tbApellido2A },null, new CheckBox[] { cbBajaA });
+                    tbNIFA.Text = "00000000A";
+                    tbNIFA.ForeColor = Color.Gray;
+                    MessageBox.Show("Se ha introducido correctamente el Alumno");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Deben estar todos los datos rellenos");
+            }
+        }
+        private void pBajaAlumno_VisibleChanged(object sender, EventArgs e)
+        {
+            if (pBajaAlumno.Visible)
+            {
+                //Se cargan los datos del combobox
+                string consulta = "SELECT Id,Nombre,Apellidos FROM Alumno";
+                manejarDatos = new OleDbCommand(consulta, conexion);
+                datos = manejarDatos.ExecuteReader();
+
+                cargarComboBox(cbAlumnoBajaA,3,true);
+            }
+        }
+        private void cbAlumnoBajaA_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            String consultaTabla = "Alumno";
+            condition = " WHERE Id="+ (cbAlumnoBajaA.SelectedItem as ListItem).Value.ToString();
+            cargarDatos(gvBajaA, consultaTabla, condition, true, new int[] { 0 });
+        }
+        private void btnEliminarA_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("¿Quiere eliminar este alumno?", "Eliminar", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                condition = "Id ="+(cbAlumnoBajaA.SelectedItem as ListItem).Value.ToString();
+                borrarRegistro("Alumno",condition);
+                /*Cambiamos la visibilidad para recargar los datos*/
+                pBajaAlumno.Visible = false;
+                pBajaAlumno.Visible = true;
+
+            }
+        }
         private void pListarAlumno_VisibleChanged(object sender, EventArgs e)
         {
             if (pListarAlumno.Visible)
             {
                 String consultaTabla = "Alumno";
-                cargarDatos(gvAlumnos, consultaTabla, true,new int[]{0,1});
+                cargarDatos(gvAlumnos, consultaTabla,"", true,new int[]{0,1});
             }
         }
         /*=========================================================================*/
@@ -233,9 +389,89 @@ namespace PracticaFinal
         {
             if (pVerNota.Visible)
             {
-                String consultaTabla = "Nota";
-                cargarDatos(gvNotas, consultaTabla, true, new int[] {0,1});
+                //Se cargan los datos del combobox
+                string consulta = "SELECT Id,Periodo FROM Periodo";
+                manejarDatos = new OleDbCommand(consulta, conexion);
+                datos = manejarDatos.ExecuteReader();
+
+                cargarComboBox(cbPeriodoVerNota,2,false);
+
+                //Se cargan los datos del listbox
+                consulta = "SELECT Id,Nombre,Apellidos FROM Alumno";
+                manejarDatos = new OleDbCommand(consulta, conexion);
+                datos = manejarDatos.ExecuteReader();
+
+                cargarListBox(lsbAlumnosVerNota);
             }
+        }
+        private void cbTodosVerNota_CheckedChanged(object sender, EventArgs e)
+        {
+            if (cbTodosVerNota.Checked)
+            {
+                for (int i = 0; i < lsbAlumnosVerNota.Items.Count; i++)
+                {
+                    lsbAlumnosVerNota.SelectedIndex = i;
+                }
+            }
+            else {
+                lsbAlumnosVerNota.SelectedIndex = -1;
+            }
+        }
+        private void lsbAlumnosVerNota_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (lsbAlumnosVerNota.SelectedIndex == -1)
+            {
+                gvNotas.DataSource = null;
+            }
+            else {
+                String consultaTabla = "Nota";
+                string idsAlumnosSeleccionados = "(";
+                for (int i=0;i<lsbAlumnosVerNota.SelectedItems.Count;i++) {
+                    idsAlumnosSeleccionados += (lsbAlumnosVerNota.SelectedItems[i] as ListItem).Value.ToString() + ",";
+                }
+                idsAlumnosSeleccionados = idsAlumnosSeleccionados.Substring(0,idsAlumnosSeleccionados.Length-1)+ ")"; //Se borra la última coma
+                condition = " WHERE id_alumno IN" +idsAlumnosSeleccionados+" AND id_periodo='"
+                    +(cbPeriodoVerNota.SelectedItem as ListItem).Value.ToString()+"'";
+                cargarDatos(gvNotas, consultaTabla, condition, true, new int[] { 0,1,2,3 });
+            }
+        }
+        private void cbPeriodoVerNota_SelectedIndexChanged(object sender, EventArgs e)
+        {
+           String consultaTabla = "Nota";
+           string idsAlumnosSeleccionados = "(";
+           if (lsbAlumnosVerNota.SelectedItems.Count>0) {
+                for (int i = 0; i < lsbAlumnosVerNota.SelectedItems.Count; i++)
+                {
+                    idsAlumnosSeleccionados += (lsbAlumnosVerNota.SelectedItems[i] as ListItem).Value.ToString() + ",";
+                }
+                idsAlumnosSeleccionados = idsAlumnosSeleccionados.Substring(0, idsAlumnosSeleccionados.Length - 1) + ")"; //Se borra la última coma
+                condition = " WHERE id_alumno IN" + idsAlumnosSeleccionados + " AND id_periodo='"
+                + (cbPeriodoVerNota.SelectedItem as ListItem).Value.ToString() + "'";
+                cargarDatos(gvNotas, consultaTabla, condition, true, new int[] { 0,1,2,3});
+            }
+        }
+        private void pInsertarNota_VisibleChanged(object sender, EventArgs e)
+        {
+            if (pInsertarNota.Visible)
+            {
+                //Se cargan los datos del combobox
+                string consulta = "SELECT Id,Nombre,Apellidos FROM Alumno";
+                manejarDatos = new OleDbCommand(consulta, conexion);
+                datos = manejarDatos.ExecuteReader();
+
+                cargarComboBox(cbAlumnoInsertarNota, 3, true);
+
+                //Se cargan los datos del combobox
+                consulta = "SELECT Id,Periodo FROM Periodo";
+                manejarDatos = new OleDbCommand(consulta, conexion);
+                datos = manejarDatos.ExecuteReader();
+
+                cargarComboBox(cbPeriodoInsertarNota, 2, false);
+            }
+        }
+        private void btnInsertarNota_Click(object sender, EventArgs e)
+        {
+
         }
         /*=========================================================================*/
 
@@ -306,13 +542,13 @@ namespace PracticaFinal
          * de solo lectura o no y un array de enteros de columnas que queremos ocultar.
          * -Carga los datos de la consulta en el GridView
          */
-        private void cargarDatos(DataGridView gv, String consultaTabla, Boolean readOnly,int[] columnasOcultas)
+        private void cargarDatos(DataGridView gv, String consultaTabla, String condicion,Boolean readOnly,int[] columnasOcultas)
         {
             String consulta = "SELECT * FROM ";
             DataSet conjuntoDatos = new DataSet();
             DataTable tablaRecuperada = new DataTable();
 
-            manejarDatos = new OleDbCommand(consulta+consultaTabla, conexion);
+            manejarDatos = new OleDbCommand(consulta+consultaTabla+condicion, conexion);
             adaptador = new OleDbDataAdapter(manejarDatos);
             constructor = new OleDbCommandBuilder(adaptador);
 
@@ -326,6 +562,63 @@ namespace PracticaFinal
             for (int i = 0;i<columnasOcultas.Length;i++) {
                 gv.Columns[i].Visible = false;
             }
+        }
+        /* 
+         * -Recibe un ComboBox que se rellenara con los datos que haya en la variable datos
+         * -Recibe un entero que indica el numero de columnas que manejamos
+         * -Recibe un boolean que indica si la clave es un entero o no
+         */
+        private void cargarComboBox(ComboBox cb,int numColumnas,Boolean esInt)
+        {
+            //Se limpia el combobox para que no se repitan los valores
+            cb.Items.Clear();
+            if (datos.HasRows)
+            {
+                /*Añado al combobox los perfiles*/
+                while (datos.Read())
+                {
+                    ListItem item = new ListItem();
+                    if (esInt)
+                    {
+                        item.Value = datos.GetInt32(0);
+                    }
+                    else {
+                        item.Value = datos.GetString(0);
+                    }
+                    switch (numColumnas) {
+                        case 2:
+                            item.Text = datos.GetString(1);
+                            break;
+                        case 3:
+                            item.Text = datos.GetString(2) + ", " + datos.GetString(1);
+                            break;
+                    }
+                    cb.Items.Add(item);
+                }
+
+            }
+            cb.SelectedIndex = 0;
+        }
+        /* 
+         * -Recibe un ComboBox que se rellenara con los datos que haya en la variable datos
+         */
+        private void cargarListBox(ListBox lb)
+        {
+            //Se limpia el listbox para que no se repitan los valores
+            lb.Items.Clear();
+            if (datos.HasRows)
+            {
+                /*Añado al combobox los perfiles*/
+                while (datos.Read())
+                {
+                    ListItem item = new ListItem();
+                    item.Value = datos.GetInt32(0);
+                    item.Text = datos.GetString(2) + ", " + datos.GetString(1);
+                    
+                    lb.Items.Add(item);
+                }
+            }
+            lb.SelectedIndex = 0;
         }
         /*
          * -Recibe un String que corresponde a la tabla
@@ -356,9 +649,21 @@ namespace PracticaFinal
             manejarDatos.ExecuteNonQuery();
         }
         /*
-         *El método recibe una serie de componentes que pone a su estado por defecto 
+         * -Recibe un String que corresponde a la tabla donde se va a borrar
+         * -Recibe un String que corresponde a la condición de los campos a borrar
          */
-        private void limpiarComponentes(TextBox[] tbs,ComboBox[] cbs) {
+        private void borrarRegistro(String tabla,String condicion)
+        {
+            /*FORMAMOS LA SENTENCIA*/
+            string sentencia = "DELETE FROM " + tabla + " WHERE "+condicion;
+
+            manejarDatos = new OleDbCommand(sentencia, conexion);
+            manejarDatos.ExecuteNonQuery();
+        }
+        /*
+         * El método recibe una serie de componentes que pone a su estado por defecto 
+         */
+        private void limpiarComponentes(TextBox[] tbs,ComboBox[] cbs, CheckBox[] chbs) {
             if (tbs!=null) {
                 foreach (TextBox t in tbs)
                 {
@@ -372,8 +677,41 @@ namespace PracticaFinal
                     c.SelectedIndex = 0;
                 }
             }
-            
+
+            if (chbs != null)
+            {
+                foreach (CheckBox ch in chbs)
+                {
+                    ch.Checked=false;
+                }
+            }
         }
+        /*
+         * Recibe una cadena de caracteres y comprueba que tiene formato y validez de DNI
+         */
+        private Boolean compruebaDNI(String dni) {
+            Boolean correcto = false;
+            if (dni.Length == 9)
+            {
+                //Comprobamos que tiene el formato 00000000A
+                string pattern = "^(([A-Z])|\\d)?\\d{8}(\\d|[A-Z])?$";
+                Match m = Regex.Match(dni,pattern);
+                if (m.Success) {
+                    String secuenciaLetrasDNI = "TRWAGMYFPDXBNJZSQVHLCKE";
+                    dni = dni.ToUpper();
+
+                    //Longitud: cadena de texto menos última posición. Así obtenemos solo el número.
+                    String numeroDNI = dni.Substring(0, dni.Length - 1);
+
+                    //Obtenemos la letra con un char que nos servirá también para el índice de las secuenciaLetrasDNI
+                    char letraDNI = dni.ToCharArray()[8];
+                    int i = Int32.Parse(numeroDNI) % 23;
+                    correcto = (letraDNI == secuenciaLetrasDNI.ToCharArray()[i]);
+                }
+            }
+            return correcto;
+        }
+
         /*===============================================================*/
     }
 }
