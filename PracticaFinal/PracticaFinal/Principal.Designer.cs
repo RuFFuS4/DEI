@@ -118,14 +118,14 @@
             this.lbInsertarNota = new System.Windows.Forms.Label();
             this.pModificarUsuario = new System.Windows.Forms.Panel();
             this.btnEditarMU = new System.Windows.Forms.Button();
+            this.btnConfirmarMU = new System.Windows.Forms.Button();
+            this.cbNombreMU = new System.Windows.Forms.ComboBox();
             this.tbContrasenaMU = new System.Windows.Forms.TextBox();
             this.cbPerfilMU = new System.Windows.Forms.ComboBox();
             this.lbPerfilModificarUsuario = new System.Windows.Forms.Label();
             this.lbContrasenaModificarUsuario = new System.Windows.Forms.Label();
             this.lbNombreModificarUsuario = new System.Windows.Forms.Label();
             this.lbModificarUsuario = new System.Windows.Forms.Label();
-            this.cbNombreMU = new System.Windows.Forms.ComboBox();
-            this.btnConfirmarMU = new System.Windows.Forms.Button();
             this.pLogin.SuspendLayout();
             this.pAltaUsuario.SuspendLayout();
             this.pListarUsuario.SuspendLayout();
@@ -335,9 +335,9 @@
             this.pVerNota.Controls.Add(this.lbAlumnosVerNota);
             this.pVerNota.Controls.Add(this.lbVerNotas);
             this.pVerNota.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pVerNota.Location = new System.Drawing.Point(0, 0);
+            this.pVerNota.Location = new System.Drawing.Point(0, 24);
             this.pVerNota.Name = "pVerNota";
-            this.pVerNota.Size = new System.Drawing.Size(615, 337);
+            this.pVerNota.Size = new System.Drawing.Size(615, 313);
             this.pVerNota.TabIndex = 5;
             this.pVerNota.VisibleChanged += new System.EventHandler(this.pVerNota_VisibleChanged);
             // 
@@ -1040,6 +1040,26 @@
             this.btnEditarMU.UseVisualStyleBackColor = true;
             this.btnEditarMU.Click += new System.EventHandler(this.btnEditarMU_Click);
             // 
+            // btnConfirmarMU
+            // 
+            this.btnConfirmarMU.Font = new System.Drawing.Font("Roboto Cn", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnConfirmarMU.Location = new System.Drawing.Point(448, 221);
+            this.btnConfirmarMU.Name = "btnConfirmarMU";
+            this.btnConfirmarMU.Size = new System.Drawing.Size(117, 57);
+            this.btnConfirmarMU.TabIndex = 14;
+            this.btnConfirmarMU.Text = "Confirmar";
+            this.btnConfirmarMU.UseVisualStyleBackColor = true;
+            this.btnConfirmarMU.Click += new System.EventHandler(this.btnConfirmarMU_Click);
+            // 
+            // cbNombreMU
+            // 
+            this.cbNombreMU.FormattingEnabled = true;
+            this.cbNombreMU.Location = new System.Drawing.Point(175, 123);
+            this.cbNombreMU.Name = "cbNombreMU";
+            this.cbNombreMU.Size = new System.Drawing.Size(161, 21);
+            this.cbNombreMU.TabIndex = 13;
+            this.cbNombreMU.SelectedIndexChanged += new System.EventHandler(this.cbNombreMU_SelectedIndexChanged);
+            // 
             // tbContrasenaMU
             // 
             this.tbContrasenaMU.Enabled = false;
@@ -1097,31 +1117,12 @@
             this.lbModificarUsuario.TabIndex = 4;
             this.lbModificarUsuario.Text = "Modificar Usuario";
             // 
-            // cbNombreMU
-            // 
-            this.cbNombreMU.FormattingEnabled = true;
-            this.cbNombreMU.Location = new System.Drawing.Point(175, 123);
-            this.cbNombreMU.Name = "cbNombreMU";
-            this.cbNombreMU.Size = new System.Drawing.Size(161, 21);
-            this.cbNombreMU.TabIndex = 13;
-            this.cbNombreMU.SelectedIndexChanged += new System.EventHandler(this.cbNombreMU_SelectedIndexChanged);
-            // 
-            // btnConfirmarMU
-            // 
-            this.btnConfirmarMU.Font = new System.Drawing.Font("Roboto Cn", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnConfirmarMU.Location = new System.Drawing.Point(448, 221);
-            this.btnConfirmarMU.Name = "btnConfirmarMU";
-            this.btnConfirmarMU.Size = new System.Drawing.Size(117, 57);
-            this.btnConfirmarMU.TabIndex = 14;
-            this.btnConfirmarMU.Text = "Confirmar";
-            this.btnConfirmarMU.UseVisualStyleBackColor = true;
-            this.btnConfirmarMU.Click += new System.EventHandler(this.btnConfirmarMU_Click);
-            // 
             // misNotas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(615, 337);
+            this.Controls.Add(this.pVerNota);
             this.Controls.Add(this.pModificarUsuario);
             this.Controls.Add(this.pLogin);
             this.Controls.Add(this.menu);
@@ -1133,7 +1134,6 @@
             this.Controls.Add(this.pAltaUsuario);
             this.Controls.Add(this.pBajaUsuario);
             this.Controls.Add(this.pListarUsuario);
-            this.Controls.Add(this.pVerNota);
             this.Controls.Add(this.pInsertarNota);
             this.MainMenuStrip = this.menu;
             this.Name = "misNotas";
