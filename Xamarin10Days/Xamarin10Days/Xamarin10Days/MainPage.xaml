@@ -7,10 +7,13 @@
              x:Class="Xamarin10Days.MainPage">
 
     <StackLayout>
-        <!-- Place new controls here -->
-        <Label Text="Welcome to Xamarin.Forms!" 
-           HorizontalOptions="Center"
-           VerticalOptions="CenterAndExpand" />
+        <Entry x:Name="nameEntry"
+            Placeholder="Enter your name"/>
+        <Button Clicked="Handle_Clicked"
+            Text="Say hello"/>
+        <Label x:Name="greetingLabel"
+            Text="Hello stranger, welcome to 10 Days of Xamarin."
+            FontSize="20"/>
     </StackLayout>
 
 </ContentPage>
