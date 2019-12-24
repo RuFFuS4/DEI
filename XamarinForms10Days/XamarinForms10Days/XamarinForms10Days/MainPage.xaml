@@ -4,7 +4,7 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
-             x:Class="Xamarin10Days.MainPage">
+             x:Class="XamarinForms10Days.MainPage">
 
     <StackLayout Margin="16,20">
         <Entry x:Name="titleEntry"

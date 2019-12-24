@@ -4,7 +4,7 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
-             x:Class="Xamarin10Days.App">
+             x:Class="XamarinForms10Days.App">
     <Application.Resources>
         <Color x:Key="mainColor">#326273</Color>
         <Color x:Key="whiteColor">#EEEEEE</Color>
