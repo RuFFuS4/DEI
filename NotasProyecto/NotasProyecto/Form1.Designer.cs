@@ -55,6 +55,7 @@
             this.evaluaDataSet5 = new NotasProyecto.evaluaDataSet5();
             this.notasBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.notasTableAdapter = new NotasProyecto.evaluaDataSet5TableAdapters.NotasTableAdapter();
+            this.button2 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panel2.SuspendLayout();
@@ -79,7 +80,7 @@
             this.panel1.Controls.Add(this.dataGridView1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel1.Margin = new System.Windows.Forms.Padding(2);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(417, 345);
             this.panel1.TabIndex = 0;
@@ -88,7 +89,7 @@
             // botonGuardar
             // 
             this.botonGuardar.Location = new System.Drawing.Point(247, 227);
-            this.botonGuardar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.botonGuardar.Margin = new System.Windows.Forms.Padding(2);
             this.botonGuardar.Name = "botonGuardar";
             this.botonGuardar.Size = new System.Drawing.Size(65, 32);
             this.botonGuardar.TabIndex = 3;
@@ -99,7 +100,7 @@
             // botonEliminar
             // 
             this.botonEliminar.Location = new System.Drawing.Point(155, 227);
-            this.botonEliminar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.botonEliminar.Margin = new System.Windows.Forms.Padding(2);
             this.botonEliminar.Name = "botonEliminar";
             this.botonEliminar.Size = new System.Drawing.Size(54, 32);
             this.botonEliminar.TabIndex = 2;
@@ -110,7 +111,7 @@
             // botonAñadir
             // 
             this.botonAñadir.Location = new System.Drawing.Point(56, 227);
-            this.botonAñadir.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.botonAñadir.Margin = new System.Windows.Forms.Padding(2);
             this.botonAñadir.Name = "botonAñadir";
             this.botonAñadir.Size = new System.Drawing.Size(61, 32);
             this.botonAñadir.TabIndex = 1;
@@ -122,7 +123,7 @@
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Location = new System.Drawing.Point(39, 29);
-            this.dataGridView1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dataGridView1.Margin = new System.Windows.Forms.Padding(2);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 62;
             this.dataGridView1.RowTemplate.Height = 28;
@@ -133,7 +134,7 @@
             // 
             this.checkBox1.AutoSize = true;
             this.checkBox1.Location = new System.Drawing.Point(21, 298);
-            this.checkBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.checkBox1.Margin = new System.Windows.Forms.Padding(2);
             this.checkBox1.Name = "checkBox1";
             this.checkBox1.Size = new System.Drawing.Size(56, 17);
             this.checkBox1.TabIndex = 2;
@@ -144,7 +145,7 @@
             // button1
             // 
             this.button1.Location = new System.Drawing.Point(220, 240);
-            this.button1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button1.Margin = new System.Windows.Forms.Padding(2);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(63, 42);
             this.button1.TabIndex = 4;
@@ -164,6 +165,7 @@
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.button2);
             this.panel2.Controls.Add(this.button1);
             this.panel2.Controls.Add(this.comboBox1);
             this.panel2.Controls.Add(this.listBox1);
@@ -171,7 +173,7 @@
             this.panel2.Controls.Add(this.checkBox1);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(0, 0);
-            this.panel2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel2.Margin = new System.Windows.Forms.Padding(2);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(417, 345);
             this.panel2.TabIndex = 6;
@@ -187,7 +189,7 @@
             "J",
             "S"});
             this.comboBox1.Location = new System.Drawing.Point(220, 101);
-            this.comboBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.comboBox1.Margin = new System.Windows.Forms.Padding(2);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(100, 21);
             this.comboBox1.TabIndex = 7;
@@ -199,7 +201,7 @@
             this.listBox1.DisplayMember = "nombre";
             this.listBox1.FormattingEnabled = true;
             this.listBox1.Location = new System.Drawing.Point(21, 32);
-            this.listBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.listBox1.Margin = new System.Windows.Forms.Padding(2);
             this.listBox1.Name = "listBox1";
             this.listBox1.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
             this.listBox1.Size = new System.Drawing.Size(155, 251);
@@ -277,6 +279,17 @@
             // 
             this.notasTableAdapter.ClearBeforeFill = true;
             // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(327, 248);
+            this.button2.Margin = new System.Windows.Forms.Padding(2);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(63, 26);
+            this.button2.TabIndex = 8;
+            this.button2.Text = "AYUDA";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -284,7 +297,7 @@
             this.ClientSize = new System.Drawing.Size(417, 345);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Form1";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
@@ -335,6 +348,7 @@
         private System.Windows.Forms.Button botonEliminar;
         private System.Windows.Forms.Button botonAñadir;
         private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.Button button2;
     }
 }
 

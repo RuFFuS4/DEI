@@ -6,6 +6,7 @@ using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using Android.OS;
+using System.IO;
 
 namespace XamarinForms10Days.Droid
 {
@@ -21,7 +22,12 @@ namespace XamarinForms10Days.Droid
 
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
-            LoadApplication(new App());
+
+            /*CARGAR CON BBDD*/
+            string fileName = "databse.db3";
+            string folderPath = System.Environment.GetFolderPath(System.Environment.SpecialFolder.MyDocuments);
+            string fullPath = Path.Combine(folderPath,fileName);//Added using System.IO
+            LoadApplication(new App(fullPath));
         }
         public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Android.Content.PM.Permission[] grantResults)
         {

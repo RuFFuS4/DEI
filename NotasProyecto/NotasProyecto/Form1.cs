@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.OleDb;
+using System.IO;
 
 namespace NotasProyecto
 {
@@ -138,6 +139,25 @@ namespace NotasProyecto
                     listBox1.SetSelected(i, false);
                 }
             }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            mostrarAyuda();
+        }
+
+        private void mostrarAyuda() {
+            String path = Path.GetDirectoryName(Application.ExecutablePath);
+            path = "file://" + Path.Combine(path, "help.chm");
+            Help.ShowHelp(this, path);
+        }
+
+        protected override bool ProcessCmdKey(ref Message msg, Keys keyData) {
+            if (keyData == Keys.F1) {
+                mostrarAyuda();
+                return true;
+            }
+            return base.ProcessCmdKey(ref msg, keyData);
         }
     }
 }

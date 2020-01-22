@@ -5,6 +5,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
+using XamarinForms10Days.Models;
+using SQLite;
 
 namespace XamarinForms10Days
 {
@@ -35,8 +37,32 @@ namespace XamarinForms10Days
 
         private void saveButton_Clicked(object sender, EventArgs e)
         {
-            titleEntry.Text = string.Empty;
-            contentEditor.Text = string.Empty;
+            // added using TenDaysOfXamarin.Model;
+            Experience newExperience = new Experience()
+            {
+                Title = titleEntry.Text,
+                Content = contentEditor.Text,
+                CreatedAt = DateTime.Now,
+                UpdatedAt = DateTime.Now
+            };
+
+            int insertedItems = 0;
+            // added using SQLite;
+            using (SQLiteConnection conn = new SQLiteConnection(App.DatabasePath))
+            {
+                conn.CreateTable<Experience>();
+                insertedItems = conn.Insert(newExperience);
+            }
+            // here the conn has been disposed of, hence closed
+            if (insertedItems > 0)
+            {
+                titleEntry.Text = string.Empty;
+                contentEditor.Text = string.Empty;
+            }
+            else
+            {
+                DisplayAlert("Error", "There was an error inserting the Experience, please try again", "Ok");
+            }
         }
 
         private void contentEntry_Clicked(object sender, EventArgs e)

@@ -184,6 +184,7 @@
     <None Include="evaluaDataSet5.xss">
       <DependentUpon>evaluaDataSet5.xsd</DependentUpon>
     </None>
+    <None Include="help.chm" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

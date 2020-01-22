@@ -21,7 +21,11 @@ namespace XamarinForms10Days.UWP
         {
             this.InitializeComponent();
 
-            LoadApplication(new XamarinForms10Days.App());
+            String dbName = "CustomersDb.db3";
+            String personalFolder = System.Environment.GetFolderPath(Environment.SpecialFolder.Personal);
+            String libraryFolder = Path.Combine(personalFolder, "..", "Library");
+            String path = Path.Combine(libraryFolder, dbName);
+            LoadApplication(new XamarinForms10Days.App(path));
         }
     }
 }

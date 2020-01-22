@@ -9,7 +9,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XamarinForms10Days.Android"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XamarinForms10Days.iOS", "XamarinForms10Days\XamarinForms10Days.iOS\XamarinForms10Days.iOS.csproj", "{EA2261B3-D3BA-4F2F-9662-4D442C78B0DC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XamarinForms10Days", "XamarinForms10Days\XamarinForms10Days\XamarinForms10Days.csproj", "{CAB19A6C-D93A-4ED7-B407-6542258D6F09}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "XamarinForms10Days", "XamarinForms10Days\XamarinForms10Days\XamarinForms10Days.csproj", "{CAB19A6C-D93A-4ED7-B407-6542258D6F09}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
